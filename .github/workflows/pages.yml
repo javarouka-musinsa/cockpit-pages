@@ -1,0 +1,58 @@
+name: pages
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "site/**"
+      - ".github/workflows/pages.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate public artifact
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f site/index.html
+          test -f site/.nojekyll
+          if find site -type l -print -quit | grep -q .; then
+            echo "Symbolic links are not allowed in the public Pages artifact." >&2
+            exit 1
+          fi
+          if grep -RIEq \
+            '(xox[baprs]-|gh[pousr]_[A-Za-z0-9_]+|glsa_[A-Za-z0-9_]+|/Users/[^/]+/|musinsa/|29CM-Developers/)' \
+            site; then
+            echo "Potential private identifier or secret found in site/." >&2
+            exit 1
+          fi
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
