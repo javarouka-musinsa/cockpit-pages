@@ -63,63 +63,84 @@
       </div>
 
       <div class="hero-product" aria-label="Cockpit 대시보드 예시">
-        <div class="menu-bar" aria-hidden="true">
-          <span>9:41</span>
-          <div class="menu-icons"><span>◉</span><span>⌁</span><strong>☑ 2</strong></div>
-        </div>
         <div class="app-window">
-          <div class="window-top">
-            <div class="traffic-lights" aria-hidden="true"><i></i><i></i><i></i></div>
-            <span class="window-title">Cockpit</span>
-            <span class="mode-pill">auto-mine</span>
-            <div class="window-status"><i></i> Codex</div>
+          <div class="ai-run-banner">
+            <strong><span aria-hidden="true">⚡</span> 자동 AI 실행 중 — 토큰이 자동으로 소모될 수 있습니다</strong>
+            <span>PR 자동 리뷰&nbsp; ›</span>
           </div>
           <div class="window-summary">
-            <div>
-              <strong>오늘의 PR 흐름</strong>
-              <span>최근 5일 · AI 리뷰 42건</span>
+            <div class="summary-copy">
+              <div class="summary-title">
+                <strong>Cockpit</strong>
+                <span class="mode-pill">auto-mine</span>
+              </div>
+              <p>대시보드 표시 범위 최근 5일 · AI 리뷰 누적 42건</p>
+              <p>판정 결과 · <b class="success-text">승인 31건</b> · <b class="danger-text">변경 요청 11건</b></p>
+              <div class="today-line">
+                <span>오늘 2건 · $0.42 환산</span>
+                <strong>AI: Codex</strong>
+              </div>
             </div>
-            <div class="review-count"><strong>2</strong><span>내 리뷰</span></div>
+            <div class="summary-actions" aria-hidden="true">
+              <div class="action-icons">
+                <span class="ai-status"><i></i>Codex</span>
+                <span>〉_</span>
+                <span>▣⌕</span>
+                <span>⌁</span>
+                <span class="danger-text">♧ 3</span>
+                <span class="accent-text">▱ 2</span>
+              </div>
+              <div class="review-count"><strong>2</strong><span>내 리뷰</span></div>
+            </div>
           </div>
           <div class="filter-row">
             <span class="filter active">전체 <b>8</b></span>
             <span class="filter danger">BLOCK <b>1</b></span>
             <span class="filter success">머지 가능 <b>3</b></span>
-            <span class="filter">CI 실패 <b>1</b></span>
+            <span class="filter warning-filter">리뷰 미지정 <b>0</b></span>
+            <span class="filter danger">CI 실패 <b>1</b></span>
+            <span class="filter">Draft <b>1</b></span>
           </div>
           <div class="window-body">
             <div class="pr-list">
               <div class="section-label"><span class="dot blue"></span>내가 리뷰어 <b>2</b><span>⌄</span></div>
               <article class="repo-card">
-                <header><strong>acme/checkout-api</strong><span>↗</span></header>
+                <header><strong>acme/checkout-api <small>1</small></strong><span>↗</span></header>
                 <div class="pr-row">
-                  <div class="pr-meta"><b>#184</b><span>@reviewer</span><em class="chip warning">재리뷰</em><em class="chip ok">CI✓</em></div>
+                  <div class="pr-meta"><b>#184</b><span>↗</span><span>@reviewer</span><em class="chip warning">재리뷰</em><em class="chip ok">CI✓</em></div>
                   <p>환불 정책 검증 경로 보강</p>
-                  <small>리뷰 기준 3개 적용 · 새 커밋 12분 전</small>
                 </div>
               </article>
               <article class="repo-card">
-                <header><strong>studio/web-console</strong><span>↗</span></header>
+                <header><strong>studio/web-console <small>1</small></strong><span>↗</span></header>
                 <div class="pr-row">
-                  <div class="pr-meta"><b>#72</b><span>@frontend</span><em class="chip block">BLOCK</em><em class="chip bad">CI×</em></div>
+                  <div class="pr-meta"><b>#72</b><span>↗</span><span>@frontend</span><em class="chip block">BLOCK</em><em class="chip bad">CI×</em></div>
                   <p>고객 문의 첨부 화면 개선</p>
-                  <small>수정 요청 1건 · 대화 요약 가능</small>
+                </div>
+              </article>
+              <div class="section-label accent-section"><span class="dot violet"></span>지식 제안 대기 <b>2</b><span>›</span></div>
+              <div class="section-label accent-section"><span class="dot violet"></span>내 PR <b>1</b><span>⌄</span></div>
+              <article class="repo-card compact-card">
+                <header><strong>acme/orders-api <small>1</small></strong><span>↗</span></header>
+                <div class="pr-row">
+                  <div class="pr-meta"><b>#206</b><span>↗</span><span>@me</span><em class="chip draft">DRAFT</em><em class="chip ok">CI✓</em></div>
+                  <p>주문 상태 전환 검증 추가</p>
                 </div>
               </article>
               <div class="section-label muted"><span class="dot green"></span>승인됨 · 머지 가능 <b>3</b><span>›</span></div>
               <div class="section-label muted"><span class="dot gray"></span>그 외 리뷰 <b>3</b><span>›</span></div>
             </div>
             <aside class="job-rail">
-              <header><strong>작업</strong><span class="rail-count">실행 2</span><button type="button">↶ 이력</button></header>
+              <header><span class="spinner"></span><strong>작업</strong><span class="rail-count">실행 2</span><button type="button">◷ 이력</button></header>
               <p class="rail-label">실행 중 <b>2</b></p>
               <article class="job-card job-running" data-demo-job>
-                <div><span class="spinner"></span><strong>리뷰</strong><em>✦ AI</em></div>
+                <div><span class="spinner"></span><strong>수동 리뷰</strong><span class="job-stop">×</span><em>봇</em></div>
                 <b>#184 <small>checkout-api</small></b>
                 <p><span data-job-time>0:42</span> · Codex · sol · medium</p>
                 <p>고위험 · 추가 기준 3개</p>
               </article>
               <article class="job-card">
-                <div><span class="spinner slow"></span><strong>대화 요약</strong><em>✦ AI</em></div>
+                <div><span class="spinner slow"></span><strong>대화 요약</strong><span class="job-stop">×</span><em>앱</em></div>
                 <b>#72 <small>web-console</small></b>
                 <p>0:18 · Codex · terra · medium</p>
               </article>
