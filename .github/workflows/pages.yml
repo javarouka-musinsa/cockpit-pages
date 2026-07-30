@@ -39,9 +39,21 @@ jobs:
             exit 1
           fi
           if grep -RIEq \
-            '(xox[baprs]-|gh[pousr]_[A-Za-z0-9_]+|glsa_[A-Za-z0-9_]+|/Users/[^/]+/|musinsa/|29CM-Developers/)' \
+            '(xox[baprs]-|gh[pousr]_[A-Za-z0-9_]+|glsa_[A-Za-z0-9_]+|/Users/[^/]+/)' \
             site; then
-            echo "Potential private identifier or secret found in site/." >&2
+            echo "Potential secret or local user path found in site/." >&2
+            exit 1
+          fi
+          unexpected_internal_repositories="$(
+            grep -RIEo \
+              '(musinsa|29CM-Developers)/[A-Za-z0-9_.-]+' \
+              site \
+              | grep -vE ':musinsa/cs-claude-marketplace$' \
+              || true
+          )"
+          if [ -n "$unexpected_internal_repositories" ]; then
+            echo "Unexpected internal repository identifier found in site/:" >&2
+            printf '%s\n' "$unexpected_internal_repositories" >&2
             exit 1
           fi
 
