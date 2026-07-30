@@ -355,26 +355,39 @@
     <section class="section setup-section" id="setup" aria-labelledby="setup-title">
       <div class="setup-copy">
         <p class="eyebrow light">Ready for local</p>
-        <h2 id="setup-title">macOS와 GitHub 인증만으로 시작합니다.</h2>
-        <p>배포 패키지를 받은 뒤 압축을 푼 폴더에서 설치합니다. AI와 모니터링 연동은 앱 설정에서 나중에 추가할 수 있습니다.</p>
+        <h2 id="setup-title">세 단계면 Cockpit이 준비됩니다.</h2>
+        <p>
+          사내 GitHub 계정으로 marketplace를 등록한 뒤 설치 명령을 실행합니다.
+          플러그인은 승인된 통합 Release만 내려받고 SHA-256을 검증한 후 앱과 worker를 함께 설치합니다.
+        </p>
         <div class="requirement-grid">
           <div><span>필수</span><strong>macOS 14+</strong><small>Apple Silicon</small></div>
-          <div><span>필수</span><strong>GitHub CLI</strong><small><code>gh auth login</code></small></div>
-          <div><span>선택</span><strong>Codex · Claude</strong><small>AI 리뷰와 조사</small></div>
-          <div><span>선택</span><strong>Loki · Slack</strong><small>로그와 알림</small></div>
+          <div><span>필수</span><strong>GitHub CLI 인증</strong><small><code>gh auth login</code> · 사내 저장소 접근</small></div>
+          <div><span>필수</span><strong>Claude Code</strong><small>marketplace와 설치 스킬 실행</small></div>
+          <div><span>선택 연동</span><strong>Codex · Claude · Loki · Slack</strong><small>없어도 핵심 설치는 정상 완료</small></div>
         </div>
       </div>
       <div class="terminal-card" aria-label="Cockpit 설치 명령">
         <div class="terminal-top"><span></span><span></span><span></span><b>Terminal</b></div>
-        <pre><code><span class="prompt">$</span> gh auth login
-<span class="comment"># 배포 패키지를 푼 폴더에서</span>
-<span class="prompt">$</span> ./scripts/cockpit install
+        <pre><code><span class="comment"># 1. GitHub 인증</span>
+<span class="prompt">$</span> gh auth login
 
-<span class="prompt">$</span> ./scripts/cockpit doctor
+<span class="comment"># 2. 사내 marketplace와 설치 플러그인 등록</span>
+<span class="prompt">$</span> claude plugin marketplace add \
+  musinsa/cs-claude-marketplace
+<span class="prompt">$</span> claude plugin install \
+  cs-pr-review-app@cs-claude-marketplace
+
+<span class="comment"># 3. Claude Code에서 설치 실행</span>
+<span class="prompt">$</span> claude
+<span class="claude-prompt">›</span> /cs-pr-review-app:install
+
+<span class="comment"># 설치 상태 확인</span>
+<span class="claude-prompt">›</span> /cs-pr-review-app:install doctor
 <span class="success">✓ app        ✓ worker
 ✓ GitHub     ○ AI (선택)
 ○ Loki       ○ Slack</span></code></pre>
-        <p>설정·상태·시크릿은 사용자의 Application Support 아래에 분리해 저장합니다.</p>
+        <p>업데이트는 <code>/cs-pr-review-app:install update</code> · 제거는 <code>/cs-pr-review-app:install uninstall</code></p>
       </div>
     </section>
 

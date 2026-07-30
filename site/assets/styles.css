@@ -1727,7 +1727,7 @@ pre,
 }
 
 .terminal-card pre {
-  min-height: 300px;
+  min-height: 430px;
   margin: 0;
   padding: 27px 24px;
   color: #e8edf4;
@@ -1738,6 +1738,10 @@ pre,
 
 .terminal-card .prompt {
   color: #67a8ff;
+}
+
+.terminal-card .claude-prompt {
+  color: #d08cf5;
 }
 
 .terminal-card .comment {
@@ -1754,6 +1758,10 @@ pre,
   border-top: 1px solid #2d333b;
   color: #7f8a98;
   font-size: 10px;
+}
+
+.terminal-card > p code {
+  color: #aeb8c5;
 }
 
 .privacy-section {
