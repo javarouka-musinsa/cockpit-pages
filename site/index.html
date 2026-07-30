@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Cockpit은 GitHub PR, 선택형 AI 리뷰, 오류 모니터링과 개발 작업을 한 화면에 모으는 macOS 앱입니다.">
+  <meta name="theme-color" content="#0b6cf4">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Cockpit — PR 작업을 한 화면에">
+  <meta property="og:description" content="GitHub PR을 분류하고, 리뷰하고, 모니터링하는 macOS 작업 공간.">
+  <meta property="og:url" content="https://javarouka-musinsa.github.io/cockpit-pages/">
+  <meta property="og:image" content="https://javarouka-musinsa.github.io/cockpit-pages/assets/social-card.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <title>Cockpit — PR 작업을 한 화면에</title>
+  <link rel="canonical" href="https://javarouka-musinsa.github.io/cockpit-pages/">
+  <link rel="icon" href="assets/cockpit-mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/styles.css">
+  <script src="assets/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+
+  <header class="site-header" data-header>
+    <a class="brand" href="#" aria-label="Cockpit 홈">
+      <span class="brand-mark" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </span>
+      <span>Cockpit</span>
+    </a>
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav" data-menu>
+      <span class="sr-only">메뉴 열기</span>
+      <span></span><span></span>
+    </button>
+    <nav class="site-nav" id="site-nav" aria-label="주요 메뉴" data-nav>
+      <a href="#overview">둘러보기</a>
+      <a href="#workflow">사용 흐름</a>
+      <a href="#capabilities">기능</a>
+      <a href="#setup">시작하기</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="live-dot"></span> macOS · PR operations</p>
+        <h1 id="hero-title">PR 작업의 흐름이<br><span>한 화면에 착륙합니다.</span></h1>
+        <p class="hero-lead">
+          리뷰할 PR을 찾고, 상태를 판단하고, 필요한 작업을 실행하는 흐름을
+          메뉴 막대의 한 공간에 모았습니다.
+        </p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#overview">화면 둘러보기 <span aria-hidden="true">↓</span></a>
+          <a class="button button-quiet" href="#setup">설치 조건 보기</a>
+        </div>
+        <ul class="integration-line" aria-label="연동 조건">
+          <li><span class="signal signal-required"></span>GitHub 필수</li>
+          <li><span class="signal signal-ai"></span>AI 선택</li>
+          <li><span class="signal signal-optional"></span>Loki · Slack 선택</li>
+        </ul>
+      </div>
+
+      <div class="hero-product" aria-label="Cockpit 대시보드 예시">
+        <div class="menu-bar" aria-hidden="true">
+          <span>9:41</span>
+          <div class="menu-icons"><span>◉</span><span>⌁</span><strong>☑ 2</strong></div>
+        </div>
+        <div class="app-window">
+          <div class="window-top">
+            <div class="traffic-lights" aria-hidden="true"><i></i><i></i><i></i></div>
+            <span class="window-title">Cockpit</span>
+            <span class="mode-pill">auto-mine</span>
+            <div class="window-status"><i></i> Codex</div>
+          </div>
+          <div class="window-summary">
+            <div>
+              <strong>오늘의 PR 흐름</strong>
+              <span>최근 5일 · AI 리뷰 42건</span>
+            </div>
+            <div class="review-count"><strong>2</strong><span>내 리뷰</span></div>
+          </div>
+          <div class="filter-row">
+            <span class="filter active">전체 <b>8</b></span>
+            <span class="filter danger">BLOCK <b>1</b></span>
+            <span class="filter success">머지 가능 <b>3</b></span>
+            <span class="filter">CI 실패 <b>1</b></span>
+          </div>
+          <div class="window-body">
+            <div class="pr-list">
+              <div class="section-label"><span class="dot blue"></span>내가 리뷰어 <b>2</b><span>⌄</span></div>
+              <article class="repo-card">
+                <header><strong>acme/checkout-api</strong><span>↗</span></header>
+                <div class="pr-row">
+                  <div class="pr-meta"><b>#184</b><span>@reviewer</span><em class="chip warning">재리뷰</em><em class="chip ok">CI✓</em></div>
+                  <p>환불 정책 검증 경로 보강</p>
+                  <small>리뷰 기준 3개 적용 · 새 커밋 12분 전</small>
+                </div>
+              </article>
+              <article class="repo-card">
+                <header><strong>studio/web-console</strong><span>↗</span></header>
+                <div class="pr-row">
+                  <div class="pr-meta"><b>#72</b><span>@frontend</span><em class="chip block">BLOCK</em><em class="chip bad">CI×</em></div>
+                  <p>고객 문의 첨부 화면 개선</p>
+                  <small>수정 요청 1건 · 대화 요약 가능</small>
+                </div>
+              </article>
+              <div class="section-label muted"><span class="dot green"></span>승인됨 · 머지 가능 <b>3</b><span>›</span></div>
+              <div class="section-label muted"><span class="dot gray"></span>그 외 리뷰 <b>3</b><span>›</span></div>
+            </div>
+            <aside class="job-rail">
+              <header><strong>작업</strong><span class="rail-count">실행 2</span><button type="button">↶ 이력</button></header>
+              <p class="rail-label">실행 중 <b>2</b></p>
+              <article class="job-card job-running" data-demo-job>
+                <div><span class="spinner"></span><strong>리뷰</strong><em>✦ AI</em></div>
+                <b>#184 <small>checkout-api</small></b>
+                <p><span data-job-time>0:42</span> · Codex · sol · medium</p>
+                <p>고위험 · 추가 기준 3개</p>
+              </article>
+              <article class="job-card">
+                <div><span class="spinner slow"></span><strong>대화 요약</strong><em>✦ AI</em></div>
+                <b>#72 <small>web-console</small></b>
+                <p>0:18 · Codex · terra · medium</p>
+              </article>
+            </aside>
+          </div>
+          <div class="window-footer">
+            <span>↻ &nbsp;9:41</span>
+            <div><span>⌂</span><span>⚙</span><span>닫기</span></div>
+          </div>
+        </div>
+        <p class="mock-caption">예시 데이터로 재현한 Cockpit 화면입니다.</p>
+      </div>
+    </section>
+
+    <section class="flight-strip" aria-label="Cockpit 핵심 흐름">
+      <div><span>01</span><strong>See</strong><small>흩어진 PR 상태를 분류</small></div>
+      <div><span>02</span><strong>Decide</strong><small>리뷰와 CI 신호를 판단</small></div>
+      <div><span>03</span><strong>Act</strong><small>필요한 작업을 바로 실행</small></div>
+      <div><span>04</span><strong>Recover</strong><small>중단 후에도 상태를 복구</small></div>
+    </section>
+
+    <section class="section intro-section" id="overview" aria-labelledby="overview-title">
+      <div class="section-heading">
+        <p class="eyebrow">화면을 옮겨 다니지 않는 흐름</p>
+        <h2 id="overview-title">정보를 더 보여주는 대신,<br>다음 행동을 더 분명하게.</h2>
+        <p>
+          Cockpit은 PR을 상태별로 나누고, 지금 필요한 행동과 진행 중인 작업을
+          같은 맥락에 둡니다. 아래 탭으로 주요 화면을 살펴보세요.
+        </p>
+      </div>
+
+      <div class="product-tour" data-tour>
+        <div class="tour-tabs" role="tablist" aria-label="Cockpit 화면">
+          <button role="tab" aria-selected="true" aria-controls="tour-dashboard" id="tab-dashboard" data-tab="dashboard">대시보드</button>
+          <button role="tab" aria-selected="false" aria-controls="tour-review" id="tab-review" data-tab="review" tabindex="-1">PR 리뷰</button>
+          <button role="tab" aria-selected="false" aria-controls="tour-monitor" id="tab-monitor" data-tab="monitor" tabindex="-1">에러 모니터</button>
+          <button role="tab" aria-selected="false" aria-controls="tour-tools" id="tab-tools" data-tab="tools" tabindex="-1">개발 도구</button>
+          <button role="tab" aria-selected="false" aria-controls="tour-settings" id="tab-settings" data-tab="settings" tabindex="-1">설정</button>
+        </div>
+
+        <div class="tour-stage">
+          <article class="tour-panel active" id="tour-dashboard" role="tabpanel" aria-labelledby="tab-dashboard" data-panel="dashboard">
+            <div class="tour-copy">
+              <span class="tour-kicker">한눈에 분류</span>
+              <h3>리뷰할 것부터 머지할 것까지</h3>
+              <p>BLOCK, 머지 가능, 리뷰 미지정, CI 실패, Draft 필터로 지금 볼 PR만 남깁니다.</p>
+              <ul><li>내 PR과 내가 리뷰어인 PR 우선</li><li>리뷰·CI·충돌 상태를 한 행에 표시</li><li>전체 화면 전환 후에도 같은 상태 유지</li></ul>
+            </div>
+            <div class="screen screen-dashboard" aria-hidden="true">
+              <div class="screen-toolbar"><span class="selected">전체 8</span><span>BLOCK 1</span><span>머지 가능 3</span><span>CI 실패 1</span></div>
+              <div class="screen-list">
+                <b>● 내가 리뷰어 <small>2</small></b>
+                <div><strong>#184</strong><span>환불 정책 검증 경로 보강</span><em>재리뷰</em><i>CI✓</i></div>
+                <div><strong>#72</strong><span>고객 문의 첨부 화면 개선</span><em class="red">BLOCK</em><i class="red">CI×</i></div>
+                <b class="fold">● 승인됨 · 머지 가능 <small>3</small></b>
+              </div>
+            </div>
+          </article>
+
+          <article class="tour-panel" id="tour-review" role="tabpanel" aria-labelledby="tab-review" data-panel="review" hidden>
+            <div class="tour-copy">
+              <span class="tour-kicker ai-kicker">✦ 선택형 AI</span>
+              <h3>리뷰 결과에서 GitHub 반영까지</h3>
+              <p>모델·effort·적용 기준과 경과시간을 확인하고, 결과를 검토한 뒤 승인 또는 변경 요청을 보냅니다.</p>
+              <ul><li>일반 리뷰와 Draft 사전 리뷰</li><li>인라인 코멘트와 대화 스레드 처리</li><li>앱을 닫아도 worker가 작업을 이어서 수행</li></ul>
+            </div>
+            <div class="screen screen-review" aria-hidden="true">
+              <div class="review-head"><span>‹ 대시보드</span><b>#184 · PR 리뷰</b><i>✦ Codex</i></div>
+              <div class="review-body">
+                <small>판정</small><strong>변경 요청</strong>
+                <p>환불 정책 검증에서 신규 분기의 경계 조건을 확인해야 합니다.</p>
+                <div class="context-row"><span>sol</span><span>medium</span><span>추가 기준 3개</span><span>누적 지식 6 KB</span></div>
+                <div class="review-actions"><button>코멘트 보기</button><button>수정 요청 보내기</button></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="tour-panel" id="tour-monitor" role="tabpanel" aria-labelledby="tab-monitor" data-panel="monitor" hidden>
+            <div class="tour-copy">
+              <span class="tour-kicker">Loki 선택 연동</span>
+              <h3>오류의 양과 시스템을 함께</h3>
+              <p>시간대별 오류 흐름을 보고 서비스를 필터링합니다. 원문 로그와 조사 화면으로 맥락이 이어집니다.</p>
+              <ul><li>환경·기간·서비스 필터</li><li>차트 hover 시 시스템별 건수 표시</li><li>AI 없이 로그 조회, 필요할 때만 AI 조사</li></ul>
+            </div>
+            <div class="screen screen-monitor" aria-hidden="true">
+              <div class="chart-toolbar"><span class="selected">prd</span><span>6시간</span><b>전체 서비스⌄</b></div>
+              <div class="chart">
+                <i class="grid-line l1"></i><i class="grid-line l2"></i><i class="grid-line l3"></i>
+                <svg viewBox="0 0 600 210" role="img" aria-label="예시 오류 추이 차트">
+                  <polyline points="0,180 70,168 130,85 190,160 255,150 330,42 395,170 470,128 540,151 600,105" fill="none" stroke="#0b6cf4" stroke-width="5"/>
+                  <polyline points="0,180 70,155 130,118 190,165 255,170 330,110 395,172 470,152 540,160 600,158" fill="none" stroke="#e4443a" stroke-width="4"/>
+                  <polyline points="0,180 70,180 130,160 190,132 255,170 330,150 395,169 470,143 540,150 600,167" fill="none" stroke="#a844d3" stroke-width="4"/>
+                </svg>
+              </div>
+              <div class="chart-legend"><span><i class="blue-bg"></i>checkout-api</span><span><i class="red-bg"></i>customer-bff</span><span><i class="violet-bg"></i>web-console</span></div>
+            </div>
+          </article>
+
+          <article class="tour-panel" id="tour-tools" role="tabpanel" aria-labelledby="tab-tools" data-panel="tools" hidden>
+            <div class="tour-copy">
+              <span class="tour-kicker">비AI + AI 구분</span>
+              <h3>개발 루틴도 같은 작업 공간에서</h3>
+              <p>로컬 실행, 로그, 테스트 데이터, 배포와 코드 검색을 기능 성격에 맞게 분리해 보여줍니다.</p>
+              <ul><li>비AI 기능은 즉시 실행</li><li>AI 기능에는 ✦ 표시와 연동 상태 명시</li><li>실행 목록과 로그는 앱을 닫아도 유지</li></ul>
+            </div>
+            <div class="screen screen-tools" aria-hidden="true">
+              <div class="tool-sidebar"><b>개발 도구</b><span class="selected">Local Run</span><span>Logs</span><span>Deploy&nbsp; <i>혼합</i></span><span>Search</span></div>
+              <div class="tool-main">
+                <small>로컬 서버</small>
+                <h4>실행할 서비스를 선택하세요</h4>
+                <div class="service-grid"><span>API</span><span>BFF</span><span>Worker</span></div>
+                <div class="run-card"><i></i><div><b>checkout-api</b><small>running · 2m 18s</small></div><button>로그</button><button>중단</button></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="tour-panel" id="tour-settings" role="tabpanel" aria-labelledby="tab-settings" data-panel="settings" hidden>
+            <div class="tour-copy">
+              <span class="tour-kicker">선택 연동</span>
+              <h3>없는 기능은 실패하지 않고 쉬어갑니다</h3>
+              <p>GitHub만으로 대시보드를 시작하고, 필요한 연동을 나중에 켤 수 있습니다.</p>
+              <ul><li>AI·Loki·Slack은 모두 선택 사항</li><li>실제 성공 시각과 마지막 오류로 상태 진단</li><li>토큰은 로컬 지원 디렉터리에만 저장</li></ul>
+            </div>
+            <div class="screen screen-settings" aria-hidden="true">
+              <div class="settings-title"><b>연동 진단</b><span>↻</span></div>
+              <div class="setting-row"><i class="ok-dot"></i><b>GitHub</b><span>API 인증 성공</span><em>정상</em></div>
+              <div class="setting-row"><i class="ok-dot"></i><b>AI · Codex</b><span>ChatGPT 로그인 사용</span><em>정상</em></div>
+              <div class="setting-row"><i class="off-dot"></i><b>Loki</b><span>필요할 때 연결</span><em class="off">선택</em></div>
+              <div class="setting-row"><i class="off-dot"></i><b>Slack</b><span>알림 기능 사용 안 함</span><em class="off">선택</em></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section workflow-section" id="workflow" aria-labelledby="workflow-title">
+      <div class="section-heading compact">
+        <p class="eyebrow">A review flight plan</p>
+        <h2 id="workflow-title">한 번의 리뷰가 지나가는 길</h2>
+        <p>단계가 바뀌어도 같은 PR과 같은 작업 ID를 따라갑니다.</p>
+      </div>
+      <ol class="workflow">
+        <li>
+          <span class="step-index">01</span>
+          <div><small>Collect</small><h3>PR 상태 수집</h3><p>GitHub의 리뷰, CI, 충돌, Draft 상태를 읽습니다. 비CS·외부 저장소는 필요한 순간에만 불러올 수 있습니다.</p></div>
+          <span class="step-badge no-ai">비AI</span>
+        </li>
+        <li>
+          <span class="step-index">02</span>
+          <div><small>Review</small><h3>검토 기준 적용</h3><p>선택한 AI와 effort, 레포 추가 기준, 누적 지식을 작업 카드에 기록하며 리뷰합니다.</p></div>
+          <span class="step-badge ai">✦ AI</span>
+        </li>
+        <li>
+          <span class="step-index">03</span>
+          <div><small>Decide</small><h3>사람이 결과 확인</h3><p>리뷰 본문과 인라인 코멘트를 확인하고 승인, 변경 요청 또는 사전 리뷰 코멘트 게시를 선택합니다.</p></div>
+          <span class="step-badge mixed">혼합</span>
+        </li>
+        <li>
+          <span class="step-index">04</span>
+          <div><small>Recover</small><h3>중단 후에도 이어서</h3><p>worker가 요청과 결과를 보존합니다. 앱이나 worker가 다시 시작돼도 실행 정보와 이력을 복구합니다.</p></div>
+          <span class="step-badge no-ai">비AI</span>
+        </li>
+      </ol>
+    </section>
+
+    <section class="section capabilities-section" id="capabilities" aria-labelledby="capabilities-title">
+      <div class="section-heading compact">
+        <p class="eyebrow">Capabilities</p>
+        <h2 id="capabilities-title">필요한 만큼만 연결합니다</h2>
+        <p>기능이 없는 환경도 정상적인 상태로 취급합니다.</p>
+      </div>
+      <div class="capability-grid">
+        <article class="capability-card primary-card">
+          <div class="card-icon dashboard-icon" aria-hidden="true"><i></i><i></i><i></i></div>
+          <span class="step-badge no-ai">GitHub</span>
+          <h3>PR 대시보드</h3>
+          <p>상태 필터, 내 PR, 리뷰 요청, 머지 가능 PR과 작업 이력을 한 화면에서 확인합니다.</p>
+        </article>
+        <article class="capability-card">
+          <div class="card-icon review-icon" aria-hidden="true">✦</div>
+          <span class="step-badge ai">선택형 AI</span>
+          <h3>리뷰와 대화 처리</h3>
+          <p>일반·사전 리뷰, 인라인 코멘트, 스레드 요약과 답글 초안을 필요할 때 실행합니다.</p>
+        </article>
+        <article class="capability-card">
+          <div class="card-icon monitor-icon" aria-hidden="true"><i></i></div>
+          <span class="step-badge mixed">Loki 선택</span>
+          <h3>오류 모니터</h3>
+          <p>서비스별 오류 추이와 원문 로그를 보고, 필요한 이슈만 AI 조사로 연결합니다.</p>
+        </article>
+        <article class="capability-card">
+          <div class="card-icon tools-icon" aria-hidden="true">⌘</div>
+          <span class="step-badge mixed">혼합</span>
+          <h3>개발 도구</h3>
+          <p>로컬 실행·로그·배포·검색을 모으고 AI 사용 기능은 별도 표식으로 구분합니다.</p>
+        </article>
+        <article class="capability-card">
+          <div class="card-icon history-icon" aria-hidden="true">↶</div>
+          <span class="step-badge no-ai">로컬 상태</span>
+          <h3>작업 레일과 이력</h3>
+          <p>모델, effort, 경과시간, 적용 기준과 종료 결과를 작업 ID 단위로 보존합니다.</p>
+        </article>
+        <article class="capability-card quiet-card">
+          <div class="card-icon shield-icon" aria-hidden="true">◌</div>
+          <span class="step-badge no-ai">Graceful degrade</span>
+          <h3>연동이 없어도 정상</h3>
+          <p>AI·Loki·Slack이 없으면 관련 UI만 비활성화하고 GitHub PR 기능은 그대로 유지합니다.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section setup-section" id="setup" aria-labelledby="setup-title">
+      <div class="setup-copy">
+        <p class="eyebrow light">Ready for local</p>
+        <h2 id="setup-title">macOS와 GitHub 인증만으로 시작합니다.</h2>
+        <p>배포 패키지를 받은 뒤 압축을 푼 폴더에서 설치합니다. AI와 모니터링 연동은 앱 설정에서 나중에 추가할 수 있습니다.</p>
+        <div class="requirement-grid">
+          <div><span>필수</span><strong>macOS 14+</strong><small>Apple Silicon</small></div>
+          <div><span>필수</span><strong>GitHub CLI</strong><small><code>gh auth login</code></small></div>
+          <div><span>선택</span><strong>Codex · Claude</strong><small>AI 리뷰와 조사</small></div>
+          <div><span>선택</span><strong>Loki · Slack</strong><small>로그와 알림</small></div>
+        </div>
+      </div>
+      <div class="terminal-card" aria-label="Cockpit 설치 명령">
+        <div class="terminal-top"><span></span><span></span><span></span><b>Terminal</b></div>
+        <pre><code><span class="prompt">$</span> gh auth login
+<span class="comment"># 배포 패키지를 푼 폴더에서</span>
+<span class="prompt">$</span> ./scripts/cockpit install
+
+<span class="prompt">$</span> ./scripts/cockpit doctor
+<span class="success">✓ app        ✓ worker
+✓ GitHub     ○ AI (선택)
+○ Loki       ○ Slack</span></code></pre>
+        <p>설정·상태·시크릿은 사용자의 Application Support 아래에 분리해 저장합니다.</p>
+      </div>
+    </section>
+
+    <section class="section privacy-section" aria-labelledby="privacy-title">
+      <div class="privacy-mark" aria-hidden="true"><span></span></div>
+      <div>
+        <p class="eyebrow">Local by design</p>
+        <h2 id="privacy-title">공개 페이지에는 제품 설명만,<br>업무 데이터는 로컬에.</h2>
+      </div>
+      <p>
+        이 안내 페이지는 예시 데이터로만 구성됩니다. Cockpit의 저장소, PR 정보,
+        연동 토큰과 작업 이력은 이 페이지로 전송되지 않습니다.
+      </p>
+    </section>
+
+    <section class="section faq-section" aria-labelledby="faq-title">
+      <div class="section-heading compact">
+        <p class="eyebrow">Before takeoff</p>
+        <h2 id="faq-title">자주 묻는 질문</h2>
+      </div>
+      <div class="faq-list">
+        <details>
+          <summary>AI 계정이 없어도 사용할 수 있나요?<span>＋</span></summary>
+          <p>네. GitHub PR 조회, 상태 필터, 상세 확인 등 비AI 기능은 그대로 동작합니다. AI가 필요한 버튼은 비활성 상태와 이유를 표시합니다.</p>
+        </details>
+        <details>
+          <summary>Loki나 Slack 토큰이 없으면 설치가 실패하나요?<span>＋</span></summary>
+          <p>실패하지 않습니다. 두 연동은 선택 사항이며, 설정하지 않으면 해당 모니터링·알림 기능만 쉬어갑니다.</p>
+        </details>
+        <details>
+          <summary>앱을 닫으면 진행 중 리뷰도 중단되나요?<span>＋</span></summary>
+          <p>게시형 리뷰는 백그라운드 worker가 소유합니다. 앱을 닫았다 다시 열어도 진행 상태와 종료 결과를 다시 확인할 수 있습니다.</p>
+        </details>
+        <details>
+          <summary>메뉴 막대 아이콘이 보이지 않으면 어떻게 하나요?<span>＋</span></summary>
+          <p>Spotlight에서 Cockpit을 다시 열면 일반 창으로 접근할 수 있습니다. 메뉴 막대 공간이 부족하면 macOS가 항목을 숨길 수 있습니다.</p>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <a class="brand footer-brand" href="#">
+      <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+      <span>Cockpit</span>
+    </a>
+    <p>PR work, landed.</p>
+    <small>macOS용 로컬 개발 작업 공간</small>
+  </footer>
+</body>
+</html>
