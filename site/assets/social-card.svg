@@ -6,9 +6,9 @@
     <path d="M15 42h11l5-20 8 34 6-25 5 11h11" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <text x="183" y="139" fill="#fff" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="54" font-weight="750">Cockpit</text>
-  <text x="86" y="292" fill="#20242b" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="71" font-weight="780">PR 작업의 흐름이</text>
-  <text x="86" y="382" fill="#0b6cf4" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="71" font-weight="780">한 화면에 착륙합니다.</text>
-  <text x="90" y="458" fill="#59616d" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="28">GitHub PR · 선택형 AI 리뷰 · 오류 모니터링 · 개발 도구</text>
+  <text x="86" y="292" fill="#20242b" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="65" font-weight="780">내 회사 업무의 흐름이</text>
+  <text x="86" y="376" fill="#0b6cf4" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="71" font-weight="780">한 화면에.</text>
+  <text x="90" y="452" fill="#59616d" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="24">코드 리뷰 · 대응 알림 · 로컬 실행 · 로그 · 배포 · 티켓</text>
   <g transform="translate(820 232)">
     <rect width="290" height="266" rx="24" fill="#fff" stroke="#cbd9eb" stroke-width="2"/>
     <rect x="24" y="28" width="126" height="18" rx="9" fill="#20242b"/>
