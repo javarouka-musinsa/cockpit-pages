@@ -62,4 +62,22 @@
       demoTime.textContent = `${minutes}:${remainder}`;
     }, 1000);
   }
+
+  const guideNavigation = document.querySelector("[data-guide-nav]");
+  if (guideNavigation && "IntersectionObserver" in window) {
+    const links = [...guideNavigation.querySelectorAll("a[href^='#']")];
+    const sections = links
+      .map((link) => document.querySelector(link.getAttribute("href")))
+      .filter(Boolean);
+    const activateGuideLink = (id) => {
+      links.forEach((link) => link.classList.toggle("active", link.getAttribute("href") === `#${id}`));
+    };
+    const observer = new IntersectionObserver((entries) => {
+      const visible = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((left, right) => right.intersectionRatio - left.intersectionRatio)[0];
+      if (visible) activateGuideLink(visible.target.id);
+    }, { rootMargin: "-18% 0px -68% 0px", threshold: [0, 0.15, 0.4] });
+    sections.forEach((section) => observer.observe(section));
+  }
 })();
