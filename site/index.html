@@ -11,15 +11,15 @@
   <meta property="og:title" content="Cockpit — 내 회사 업무의 흐름이 한 화면에">
   <meta property="og:description" content="코드 리뷰부터 대응 알림, 로컬 개발, 로그, 배포와 티켓까지 이어지는 macOS 업무 공간.">
   <meta property="og:url" content="https://javarouka-musinsa.github.io/cockpit-pages/">
-  <meta property="og:image" content="https://javarouka-musinsa.github.io/cockpit-pages/assets/social-card.png?v=588b3ec">
+  <meta property="og:image" content="https://javarouka-musinsa.github.io/cockpit-pages/assets/social-card.png?v=guide-1">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <title>Cockpit — 내 회사 업무의 흐름이 한 화면에</title>
   <link rel="canonical" href="https://javarouka-musinsa.github.io/cockpit-pages/">
   <!-- Keep the bundle revision in sync when public assets change so Pages never mixes releases. -->
-  <link rel="icon" href="assets/cockpit-mark.svg?v=588b3ec" type="image/svg+xml">
-  <link rel="stylesheet" href="assets/styles.css?v=588b3ec">
-  <script src="assets/app.js?v=588b3ec" defer></script>
+  <link rel="icon" href="assets/cockpit-mark.svg?v=guide-1" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/styles.css?v=guide-1">
+  <script src="assets/app.js?v=guide-1" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">본문으로 건너뛰기</a>
@@ -41,13 +41,14 @@
       <a href="#workflow">사용 흐름</a>
       <a href="#capabilities">기능</a>
       <a href="#setup">시작하기</a>
+      <a href="guide/">사용 문서</a>
     </nav>
   </header>
 
   <main id="main">
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-copy">
-        <p class="eyebrow"><span class="live-dot"></span> Cockpit 1.30 · macOS</p>
+        <p class="eyebrow"><span class="live-dot"></span> Cockpit 1.32 · macOS</p>
         <h1 id="hero-title">내 회사 업무의 흐름이<br><span>한 화면에.</span></h1>
         <p class="hero-lead">
           코드 리뷰, 대응 알림, 로컬 실행, 로그, 배포와 티켓처럼 하루 동안 오가는 업무를
@@ -55,6 +56,7 @@
         </p>
         <div class="hero-actions">
           <a class="button button-primary" href="#overview">화면 둘러보기 <span aria-hidden="true">↓</span></a>
+          <a class="button button-quiet" href="guide/">사용 문서</a>
           <a class="button button-quiet" href="#setup">설치 조건 보기</a>
         </div>
         <ul class="integration-line" aria-label="연동 조건">
@@ -252,7 +254,7 @@
               <div class="alert-columns">
                 <div class="alert-list">
                   <h4>조사중 <small>2</small></h4>
-                  <div class="alert-cluster"><header><i></i><b>주문 API 지연 전파</b><span>3이슈 · 14건</span><em>AI</em></header><p>checkout-api timeout이 customer-bff까지 전파</p><footer><span>조사중</span><span>CSE-2048</span><span>Slack 공유됨</span></footer></div>
+                  <div class="alert-cluster"><header><i></i><b>주문 API 지연 전파</b><span>3이슈 · 14건</span><em>AI</em></header><p>checkout-api timeout이 customer-bff까지 전파</p><footer><span>조사중</span><span>CSE-2048</span><span>Done 이후 재발</span></footer></div>
                   <h4>미착수 <small>6</small></h4>
                   <div class="alert-issue"><header><i></i><b>결제 승인 응답 지연</b><span>×7</span></header><p>payment-api · /payments/approve · 8분 전</p><footer><span>조사중</span><span>해결</span><span>무시</span><span>티켓</span></footer></div>
                   <div class="alert-issue"><header><i></i><b>배송 조회 5xx 증가</b><span>×3</span></header><p>logistics-api · /deliveries · 21분 전</p></div>
@@ -321,7 +323,7 @@
               <ul><li>실제 성공 시각과 마지막 오류로 상태 진단</li><li>Codex·Claude 플랫폼과 모델 정책 선택</li><li>앱과 worker를 같은 Release로 원자 업데이트</li></ul>
             </div>
             <div class="screen screen-settings" aria-hidden="true">
-              <div class="snapshot-nav"><span>‹ 대시보드</span><b>설정</b><i>Cockpit 1.30.6</i></div>
+              <div class="snapshot-nav"><span>‹ 대시보드</span><b>설정</b><i>Cockpit 1.32.0</i></div>
               <div class="settings-title"><b>연동 진단</b><span>↻ 다시 확인</span></div>
               <div class="setting-row"><i class="ok-dot"></i><b>GitHub</b><span>API 인증 성공 · 방금</span><em>정상</em></div>
               <div class="setting-row"><i class="ok-dot"></i><b>AI · Codex</b><span>ChatGPT 로그인 · auto-mine</span><em>정상</em></div>
@@ -368,9 +370,9 @@
           <p>이미 리뷰한 PR도 코드가 바뀌고 내가 다시 리뷰어가 되면 최신 head SHA 기준으로 자동 재리뷰합니다.</p>
         </article>
         <article class="update-card update-accent">
-          <span>1.30.6 · ALERTS</span>
-          <h3>현재 대응 중인 티켓만 확인합니다</h3>
-          <p>누적된 모든 Jira 연결을 훑지 않고, 지금 화면에 표시된 이슈와 활성 원인 묶음의 Done 티켓만 조회해 정리합니다.</p>
+          <span>1.32 · ALERTS</span>
+          <h3>완료와 재발을 같은 결과에서 구분합니다</h3>
+          <p>현재 표시 이슈의 Done 티켓만 확인하고 과거 로그를 즉시 정리합니다. 완료 이후 로그는 재발로 표시하고 제외·재발 수를 함께 알려줍니다.</p>
         </article>
       </div>
     </section>

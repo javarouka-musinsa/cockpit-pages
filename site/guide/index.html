@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Cockpit 앱과 백그라운드 worker를 설정하고 사용하는 방법을 설명하는 공식 사용 문서입니다.">
+  <meta name="theme-color" content="#0b6cf4">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Cockpit 사용 문서 — 앱과 worker 운용 가이드">
+  <meta property="og:description" content="첫 설정부터 PR 리뷰, 대응 알림, 개발 도구와 문제 해결까지.">
+  <meta property="og:url" content="https://javarouka-musinsa.github.io/cockpit-pages/guide/">
+  <meta property="og:image" content="https://javarouka-musinsa.github.io/cockpit-pages/assets/social-card.png?v=guide-1">
+  <title>Cockpit 사용 문서 — 앱과 worker 운용 가이드</title>
+  <link rel="canonical" href="https://javarouka-musinsa.github.io/cockpit-pages/guide/">
+  <link rel="icon" href="../assets/cockpit-mark.svg?v=guide-1" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/styles.css?v=guide-1">
+  <script src="../assets/app.js?v=guide-1" defer></script>
+</head>
+<body class="guide-page">
+  <a class="skip-link" href="#guide-main">본문으로 건너뛰기</a>
+
+  <header class="site-header guide-header" data-header>
+    <a class="brand" href="../" aria-label="Cockpit 홈">
+      <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+      <span>Cockpit</span><small>사용 문서</small>
+    </a>
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav" data-menu>
+      <span class="sr-only">메뉴 열기</span><span></span><span></span>
+    </button>
+    <nav class="site-nav" id="site-nav" aria-label="문서 메뉴" data-nav>
+      <a href="#start">시작하기</a>
+      <a href="#settings">설정</a>
+      <a href="#review">PR 리뷰</a>
+      <a href="#alerts">대응 알림</a>
+      <a href="#troubleshooting">문제 해결</a>
+      <a class="nav-home" href="../">제품 소개</a>
+    </nav>
+  </header>
+
+  <main id="guide-main">
+    <section class="guide-hero" aria-labelledby="guide-title">
+      <div>
+        <p class="eyebrow"><span class="live-dot"></span> Cockpit flight manual · v1</p>
+        <h1 id="guide-title">앱은 조종석,<br><span>worker는 자동 항법.</span></h1>
+        <p>
+          Cockpit의 화면과 백그라운드 자동화가 어디서 만나고 어디서 나뉘는지부터 설명합니다.
+          처음 연결하는 사람은 위에서 아래로, 이미 쓰고 있다면 필요한 업무만 골라 읽으세요.
+        </p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#start">처음 설정하기 <span aria-hidden="true">↓</span></a>
+          <a class="button button-quiet" href="#map">전체 문서 보기</a>
+        </div>
+      </div>
+      <div class="guide-instrument" aria-label="Cockpit 구성 요소">
+        <div class="instrument-head"><span>CONTROL SURFACES</span><b>READY</b></div>
+        <div class="instrument-row"><i class="instrument-blue"></i><div><b>macOS 앱</b><span>보고 · 선택하고 · 실행</span></div><em>FOREGROUND</em></div>
+        <div class="instrument-row"><i class="instrument-violet"></i><div><b>worker</b><span>큐 · 자동 리뷰 · 복구</span></div><em>BACKGROUND</em></div>
+        <div class="instrument-row"><i class="instrument-green"></i><div><b>Workspace</b><span>조직 · 저장소 · 연동 범위</span></div><em>PROFILE</em></div>
+        <p>유휴 상태에서는 AI를 실행하지 않습니다. 자동 소모는 사용자가 켠 자동 리뷰 경로에서만 발생합니다.</p>
+      </div>
+    </section>
+
+    <section class="guide-map" id="map" aria-labelledby="map-title">
+      <div class="guide-map-title"><small>DOCUMENT MAP</small><h2 id="map-title">업무를 기준으로 찾으세요.</h2></div>
+      <a href="#start"><span>01</span><b>첫 실행</b><small>설치 · 필수 연결 · 진단</small></a>
+      <a href="#settings"><span>02</span><b>설정</b><small>Workspace · 서비스별 연결</small></a>
+      <a href="#dashboard"><span>03</span><b>대시보드</b><small>PR · 상태 · 작업 레일</small></a>
+      <a href="#review"><span>04</span><b>PR 리뷰</b><small>수동 · 자동 · 재리뷰</small></a>
+      <a href="#alerts"><span>05</span><b>대응 알림</b><small>묶기 · 조사 · 티켓 · 재발</small></a>
+      <a href="#tools"><span>06</span><b>개발 도구</b><small>로그 · 실행 · 배포 · 검색</small></a>
+      <a href="#worker"><span>07</span><b>worker</b><small>소유권 · 복구 · 안전장치</small></a>
+      <a href="#troubleshooting"><span>08</span><b>문제 해결</b><small>인증 · 누락 · 정체</small></a>
+    </section>
+
+    <div class="guide-shell">
+      <aside class="guide-rail" aria-label="문서 목차">
+        <p>FLIGHT SECTIONS</p>
+        <nav data-guide-nav>
+          <a href="#start"><span>01</span>첫 실행</a>
+          <a href="#settings"><span>02</span>설정</a>
+          <a href="#dashboard"><span>03</span>대시보드</a>
+          <a href="#review"><span>04</span>PR 리뷰</a>
+          <a href="#work"><span>05</span>작업·이력</a>
+          <a href="#alerts"><span>06</span>대응 알림</a>
+          <a href="#tools"><span>07</span>개발 도구</a>
+          <a href="#worker"><span>08</span>worker</a>
+          <a href="#troubleshooting"><span>09</span>문제 해결</a>
+        </nav>
+        <div class="guide-legend">
+          <span><i class="required-dot"></i>필수</span>
+          <span><i class="optional-dot"></i>선택</span>
+          <span><i class="ai-dot"></i>AI 사용</span>
+        </div>
+      </aside>
+
+      <article class="guide-content">
+        <section class="guide-section" id="start">
+          <header><small>01 · PREFLIGHT</small><h2>첫 실행은 연결보다 진단부터</h2><p>설치가 끝났다면 모든 연동을 한 번에 채우지 않아도 됩니다. GitHub로 기본 화면을 먼저 만들고 필요한 기능만 확장하세요.</p></header>
+          <div class="guide-path"><span>설정</span><b>→</b><span>연동 서비스</span><b>→</b><span>GitHub</span><b>→</b><span>다시 확인</span></div>
+          <ol class="guide-steps">
+            <li><span>1</span><div><h3>GitHub 인증을 확인합니다</h3><p><code>gh auth status</code>가 현재 사용할 host와 계정을 보여줘야 합니다. GitHub는 PR 대시보드의 유일한 필수 연동입니다.</p></div></li>
+            <li><span>2</span><div><h3>모니터링 저장소를 등록합니다</h3><p>직접 볼 저장소를 추가합니다. 등록 범위 밖이어도 내가 만든 open·Draft PR은 ‘내 PR’에 계속 나타납니다.</p></div></li>
+            <li><span>3</span><div><h3>연동 진단에서 실제 성공을 확인합니다</h3><p>설정값 존재가 아니라 마지막 성공 시각과 오류를 기준으로 판단합니다. 선택 연동이 비어 있는 것은 오류가 아닙니다.</p></div></li>
+            <li><span>4</span><div><h3>자동화는 마지막에 켭니다</h3><p>AI 플랫폼, 리뷰 범위와 모드를 확인한 다음 자동 리뷰를 켜세요. 새 설치는 자동 실행이 꺼진 안전한 상태에서 시작합니다.</p></div></li>
+          </ol>
+          <div class="guide-callout info"><b>설치 명령이 필요한가요?</b><p>제품 소개 페이지의 <a href="../#setup">설치 절차</a>에서 marketplace 등록, doctor, update와 uninstall 명령을 확인할 수 있습니다.</p></div>
+        </section>
+
+        <section class="guide-section" id="settings">
+          <header><small>02 · CONFIGURATION</small><h2>설정은 두 가지 관점으로 봅니다</h2><p>‘무슨 일을 할 것인가’와 ‘어떤 서비스에 연결할 것인가’를 분리했습니다. 같은 값을 여러 화면에 중복 입력하지 않습니다.</p></header>
+          <div class="guide-split">
+            <article><span>TASK VIEW</span><h3>업무별 설정</h3><p>PR 및 리뷰, 오류 대응, 개발 도구, AI 및 자동화처럼 사용 목적에서 시작합니다.</p><ul><li>어떤 기능이 켜지는지 확인</li><li>모드와 동작 정책 선택</li><li>필요한 서비스 설정으로 이동</li></ul></article>
+            <article><span>SERVICE VIEW</span><h3>서비스별 설정</h3><p>GitHub, Jira, Loki, Slack, AI별 연결값과 인증 상태를 한곳에서 관리합니다.</p><ul><li>필수값과 선택값 구분</li><li>마지막 성공·오류 확인</li><li>다중 조직·팀·프로젝트 범위 관리</li></ul></article>
+          </div>
+          <div class="guide-table" role="table" aria-label="연동별 필수 여부">
+            <div class="guide-table-head" role="row"><span>서비스</span><span>필수 여부</span><span>비워두면</span></div>
+            <div role="row"><b>GitHub</b><em class="required">필수</em><span>PR 목록과 명령을 사용할 수 없음</span></div>
+            <div role="row"><b>AI</b><em>선택</em><span>리뷰·분석 버튼만 쉬어감</span></div>
+            <div role="row"><b>Jira</b><em>선택</em><span>티켓 생성·연결·완료 정리만 숨김</span></div>
+            <div role="row"><b>Loki</b><em>선택</em><span>오류 수집·모니터 화면만 쉬어감</span></div>
+            <div role="row"><b>Slack</b><em>선택</em><span>채널 수집·공유·멘션만 쉬어감</span></div>
+          </div>
+          <h3 class="guide-subtitle">Workspace 범위를 비워두면</h3>
+          <p>조직·팀 자동 발견은 실행하지 않고 직접 등록한 저장소만 정기 폴링합니다. 내 PR은 저장소 범위와 무관하게 표시되며, 범위 밖 리뷰 요청은 ‘내 리뷰 요청 전체’를 명시적으로 켠 경우에만 합쳐집니다.</p>
+          <div class="guide-callout safe"><b>다중 값 지원</b><p>organization, team, 고정 저장소와 Jira 프로젝트는 여러 개를 등록할 수 있습니다. 예시 이름은 입력 형식을 설명하는 플레이스홀더이며 실제 범위로 저장되지 않습니다.</p></div>
+        </section>
+
+        <section class="guide-section" id="dashboard">
+          <header><small>03 · DASHBOARD</small><h2>PR 상태와 실행 작업을 같은 시야에</h2><p>왼쪽은 판단할 PR, 오른쪽은 지금 움직이는 작업입니다. 메뉴 막대 패널과 큰 창은 같은 상태를 공유합니다.</p></header>
+          <div class="guide-anatomy">
+            <div><span>A</span><b>상단 요약</b><p>리뷰 모드, 누적 결과, 오늘 사용량과 연동 상태</p></div>
+            <div><span>B</span><b>필터</b><p>BLOCK, 머지 가능, 리뷰 미지정, CI 실패, Draft</p></div>
+            <div><span>C</span><b>PR 섹션</b><p>내가 리뷰어, 내 PR, 승인됨, 그 외 리뷰</p></div>
+            <div><span>D</span><b>작업 레일</b><p>진행 단계, 경과시간, 모델, 정체와 결정적 오류</p></div>
+          </div>
+          <h3 class="guide-subtitle">PR 행에서 읽는 신호</h3>
+          <ul class="guide-bullets"><li><code>재리뷰</code>는 이전 리뷰 뒤 코드가 바뀌었거나 새 리뷰 요청이 왔다는 뜻입니다.</li><li><code>CI×</code>는 체크 실패, <code>CI…</code>는 아직 진행 중임을 뜻합니다.</li><li><code>BLOCK</code>은 AI 판정 기록이며 GitHub의 REQUEST_CHANGES를 자동 제출했다는 뜻이 아닙니다.</li><li>행을 열면 본문, 변경 맥락, 리뷰 결과와 대화 처리 도구를 확인할 수 있습니다.</li></ul>
+        </section>
+
+        <section class="guide-section" id="review">
+          <header><small>04 · REVIEW</small><h2>자동화 범위를 먼저 고르고 리뷰합니다</h2><p>수동 리뷰와 자동 리뷰는 같은 분석 파이프라인을 사용하지만 시작 조건이 다릅니다.</p></header>
+          <div class="mode-grid">
+            <article><b>manual</b><span>사용자 선택</span><p>앱에서 실행하거나 명시적으로 요청한 PR만 리뷰합니다.</p></article>
+            <article><b>auto-mine</b><span>추천 시작점</span><p>현재 GitHub 계정이나 소속 팀이 리뷰어로 지정된 PR만 자동 리뷰합니다.</p></article>
+            <article><b>auto</b><span>전체 범위</span><p>설정한 Workspace 범위의 새 PR·새 커밋을 자동 리뷰합니다.</p></article>
+          </div>
+          <div class="guide-flow" aria-label="리뷰 흐름"><span>PR 발견</span><i>→</i><span>head SHA 확인</span><i>→</i><span>AI 분석</span><i>→</i><span>코멘트</span><i>→</i><span>CI 게이트</span><i>→</i><span>승인 또는 보류</span></div>
+          <h3 class="guide-subtitle">재리뷰는 언제 실행되나요?</h3>
+          <p>이전 리뷰 이력이 있어도 head SHA가 달라졌거나 같은 head에서 리뷰가 다시 요청되면 새 작업으로 봅니다. 실패·시간 초과는 자동 재실행하지 않으며 작업 카드나 이력에서 사용자가 다시 실행합니다.</p>
+          <div class="guide-callout warning"><b>자동 리뷰는 머지를 잠그지 않습니다</b><p>보완 필요 판정은 일반 코멘트로 남기고 승인을 보류합니다. 자동으로 REQUEST_CHANGES를 제출하지 않습니다. 승인은 분석 통과와 CI 조건을 모두 만족할 때만 수행합니다.</p></div>
+          <h3 class="guide-subtitle">사전 리뷰와 게시형 리뷰</h3>
+          <p>Draft나 본인 PR은 사전 리뷰로 결과를 먼저 확인할 수 있습니다. 게시형 리뷰는 worker가 GitHub 반영과 종료 결과까지 소유하며, 앱을 닫아도 계속됩니다.</p>
+        </section>
+
+        <section class="guide-section" id="work">
+          <header><small>05 · ACTIVITY</small><h2>작업 카드는 상태가 아니라 설명입니다</h2><p>리뷰, Jira, Slack, Loki, AI 분석, 지식 관리와 GitHub 작업이 같은 카드 규칙을 사용합니다.</p></header>
+          <div class="activity-legend">
+            <div><b>실행 중</b><span>대상 · 현재 단계 · 경과/제한시간</span></div>
+            <div><b>정체 의심</b><span>진행 신호가 오래 갱신되지 않음</span></div>
+            <div><b>결정적 오류</b><span>인증·필수 CLI·실행 파일 문제처럼 기다려도 회복되지 않음</span></div>
+            <div><b>완료 이력</b><span>실행 당시 모델·effort·수치·종료 원인</span></div>
+          </div>
+          <p>정체나 오류가 표시돼도 자동으로 재실행하지 않습니다. 현재 작업을 중단할지, 이력에서 다시 실행할지는 사용자가 선택합니다.</p>
+        </section>
+
+        <section class="guide-section" id="alerts">
+          <header><small>06 · INCIDENTS</small><h2>이벤트를 모으는 화면이 아니라 대응을 끝내는 화면</h2><p>Slack과 Loki에서 들어온 로그를 같은 시그니처의 이슈로 묶고, 여러 이슈는 하나의 원인으로 정리합니다.</p></header>
+          <div class="guide-flow alert-flow" aria-label="알림 처리 흐름"><span>수집</span><i>→</i><span>이슈화</span><i>→</i><span>원인 묶기</span><i>→</i><span>조사중</span><i>→</i><span>Jira</span><i>→</i><span>해결</span></div>
+          <h3 class="guide-subtitle">묶기와 자동 편입</h3>
+          <p>같은 안정 오류 패턴은 기존 원인에 자동 편입됩니다. 신뢰도가 낮거나 여러 원인과 충돌하면 제안으로 남겨 사용자가 결정합니다. ‘빼기’는 해당 이슈만 원인 묶음에서 되돌립니다.</p>
+          <h3 class="guide-subtitle">조사중으로 옮긴 뒤</h3>
+          <p>행은 조사중 섹션에 남고 티켓, 공유, 해결과 무시 액션을 계속 사용할 수 있습니다. AI 분석은 현재 미처리 항목만 입력으로 사용하며, 정리 후 다시 실행하면 최신 원인 구조를 반영합니다.</p>
+          <div class="done-explainer">
+            <span>DONE CUTOFF</span>
+            <div><b>티켓 완료 시각 이전</b><p>목록·차트·다음 AI 입력에서 제외</p></div>
+            <i></i>
+            <div><b>티켓 완료 시각 이후</b><p><em>Done 이후 재발</em>로 유지</p></div>
+          </div>
+          <h3 class="guide-subtitle">완료 티켓 정리</h3>
+          <ol class="guide-compact-steps"><li>현재 화면에 연결된 Jira 티켓만 조회합니다.</li><li>Done 시각을 받은 티켓과 제외할 로그를 미리 보여줍니다.</li><li>정리 후 신규 제외·누적 제외·재발 수를 즉시 표시합니다.</li><li>완료 시각이 없는 티켓은 안전하게 건너뛰고 키를 알려줍니다.</li></ol>
+          <div class="guide-callout warning"><b>완료된 티켓의 행이 다시 보인다면</b><p>대부분 정리 실패가 아니라 완료 이후 같은 오류가 다시 발생한 경우입니다. 행의 ‘Done 이후 재발’ 칩과 최근 발생 시각을 확인하세요.</p></div>
+          <h3 class="guide-subtitle">해결과 무시</h3>
+          <p>해결은 유효한 대응 완료, 무시는 노이즈·해당 없음 기록입니다. 둘 다 현재 이벤트를 종결하지만 새 이벤트가 들어오면 다시 판단할 수 있습니다. 완료 티켓 cutoff는 과거 로그의 재수집까지 막는 별도 기준입니다.</p>
+        </section>
+
+        <section class="guide-section" id="tools">
+          <header><small>07 · TOOLS</small><h2>도구마다 AI 사용 여부가 다릅니다</h2><p>버튼의 ✦ 표식과 실행 카드의 ‘비AI·AI·혼합’ 표시를 보고 비용과 권한 범위를 판단할 수 있습니다.</p></header>
+          <div class="tool-doc-grid">
+            <article><b>Local Run</b><span>비AI</span><p>서비스, 환경과 옵션을 고르고 JDK·인증·로컬 인프라 사전 검증 후 실행합니다.</p></article>
+            <article><b>Logs</b><span>비AI</span><p>서비스·환경·기간·검색 프리셋으로 Workspace에 연결된 로그 화면을 엽니다.</p></article>
+            <article><b>Code Search</b><span>비AI</span><p>설정된 코드 검색 connector로 여러 저장소를 읽기 전용 검색합니다.</p></article>
+            <article><b>Test Order</b><span class="uses-ai">AI</span><p>지원 Workspace에서만 노출되며, 실행 전 대상과 시나리오를 다시 확인합니다.</p></article>
+            <article><b>Deploy</b><span>혼합</span><p>계획은 확인 가능한 형태로 만들고 외부 배포 실행은 사용자의 명시적 선택으로 시작합니다.</p></article>
+            <article><b>Alert 조사</b><span class="uses-ai">AI</span><p>원문 증거를 읽어 조사 보고서를 만들며 외부 쓰기 작업은 별도 단계로 분리합니다.</p></article>
+          </div>
+        </section>
+
+        <section class="guide-section" id="worker">
+          <header><small>08 · BACKGROUND</small><h2>worker가 소유한 작업은 앱을 닫아도 이어집니다</h2><p>앱은 요청을 만들고 상태를 보여줍니다. worker는 복구 가능한 큐에서 게시형 리뷰와 자동화의 실행·GitHub 반영·종료 결과를 소유합니다.</p></header>
+          <div class="ownership-grid">
+            <article><h3>앱이 소유</h3><ul><li>화면 상태와 사용자 입력</li><li>설정·연동 진단</li><li>대응 알림 정리·연결</li><li>비차단 확인 선반</li></ul></article>
+            <article><h3>worker가 소유</h3><ul><li>자동·게시형 PR 리뷰</li><li>작업 큐와 재시작 복구</li><li>CI 대기와 승인 게이트</li><li>선택한 Slack·Loki 폴링</li></ul></article>
+          </div>
+          <div class="guide-callout safe"><b>중복 실행 방지</b><p>Workspace, PR head SHA와 리뷰 요청 신호를 함께 기록합니다. 같은 요청의 반복 폴링은 건너뛰고 코드 변경이나 새 재리뷰 요청만 새 작업으로 처리합니다.</p></div>
+        </section>
+
+        <section class="guide-section" id="troubleshooting">
+          <header><small>09 · RECOVERY</small><h2>문제는 설정값보다 마지막 성공에서 찾습니다</h2><p>먼저 설정의 연동 진단과 작업 카드의 결정적 오류를 확인하세요.</p></header>
+          <div class="trouble-list">
+            <details><summary>PR 목록이 비어 있습니다<span>＋</span></summary><p>GitHub 인증과 모니터링 저장소를 확인하세요. 조직·팀 범위를 비웠다면 직접 등록한 저장소만 정기 폴링합니다.</p></details>
+            <details><summary>내 PR 또는 리뷰 요청이 보이지 않습니다<span>＋</span></summary><p>현재 <code>gh</code> 로그인 계정이 PR 작성자·리뷰어와 일치하는지 확인하세요. 범위 밖 리뷰 요청은 설정에서 ‘내 리뷰 요청 전체’를 켜야 합니다.</p></details>
+            <details><summary>자동 리뷰가 시작되지 않습니다<span>＋</span></summary><p>AI 연동, 전역 AI 실행 스위치, 리뷰 모드와 Workspace 범위를 순서대로 확인하세요. <code>manual</code> 모드는 자동 리뷰를 실행하지 않습니다.</p></details>
+            <details><summary>작업 카드가 정체 상태입니다<span>＋</span></summary><p>진행 신호가 늦은 것인지 결정적 오류가 있는지 먼저 구분하세요. 실패·시간 초과 작업은 자동 재실행되지 않으므로 원인을 해결한 뒤 수동으로 다시 실행합니다.</p></details>
+            <details><summary>Loki 또는 Slack 알림이 들어오지 않습니다<span>＋</span></summary><p>해당 서비스 연결, 감시 대상과 마지막 heartbeat를 확인하세요. 선택 연동이 비어 있으면 관련 기능만 의도적으로 비활성화됩니다.</p></details>
+            <details><summary>완료 티켓 정리 후 행이 남습니다<span>＋</span></summary><p>정리 결과의 재발 건수와 행의 ‘Done 이후 재발’ 칩을 확인하세요. 완료 시각 이후 로그는 새 장애 신호로 남습니다.</p></details>
+            <details><summary>메뉴 막대에서 Cockpit이 보이지 않습니다<span>＋</span></summary><p>Spotlight에서 Cockpit을 다시 열면 큰 창으로 접근할 수 있습니다. 메뉴 막대 공간이 부족하면 macOS가 항목을 숨길 수 있습니다.</p></details>
+          </div>
+          <div class="guide-last-check"><span>LAST CHECK</span><div><b>설정 → 시작 및 상태 → 연동 진단</b><p>GitHub · AI · Jira · Loki · Slack의 마지막 성공과 오류를 한곳에서 확인합니다.</p></div></div>
+        </section>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer guide-footer">
+    <a class="brand footer-brand" href="../"><span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span><span>Cockpit</span></a>
+    <p><a href="#guide-main">문서 처음으로 ↑</a></p>
+    <small>앱과 worker 사용 문서 · v1</small>
+  </footer>
+</body>
+</html>

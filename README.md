@@ -1,6 +1,6 @@
 # Cockpit Pages
 
-Public product guide for Cockpit, a macOS PR operations workspace.
+Public product guide and user manual for Cockpit, a macOS development operations workspace.
 
 The application and worker source remain in a separate private repository. This
 repository contains only the static public guide and its deployment workflow.
@@ -12,6 +12,9 @@ python3 -m http.server 8080 --directory site
 ```
 
 Open <http://127.0.0.1:8080/>.
+
+- Product overview: `/`
+- App and worker manual: `/guide/`
 
 ## Deployment
 
