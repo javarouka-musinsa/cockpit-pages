@@ -2919,24 +2919,23 @@ pre,
 }
 
 .guide-rail nav a {
-  display: grid;
-  grid-template-columns: 25px 1fr;
+  /* Labels no longer have a separate number cell. Use the full link width. */
+  display: block;
+  min-width: 0;
   padding: 8px 7px;
   border-radius: 7px;
   color: #4b5562;
   font-size: 12px;
   font-weight: 680;
+  line-height: 1.5;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
 }
 
 .guide-rail nav a:hover,
 .guide-rail nav a.active {
   color: var(--blue-deep);
   background: var(--sky-pale);
-}
-
-.guide-rail nav span {
-  color: #87919d;
-  font: 700 9px ui-monospace, monospace;
 }
 
 .guide-legend {
