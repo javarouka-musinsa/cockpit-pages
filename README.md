@@ -34,6 +34,10 @@ The static site has no build dependencies. Check both pages at desktop and
 guide anchors and enlarged images. Automated checks cannot inspect image pixels
 for sensitive information; review every image before publishing.
 
+Check the guide sidebar at 1024, 1280 and 1440 px as well: each label must use the
+full link width and fit on one line at the default font size. Checking only the
+page scroll width will not detect text squeezed into an obsolete number column.
+
 ## Keeping the guide current
 
 - Current documentation and UI basis: **Cockpit 1.34.22**, reviewed **2026-09-06**.
