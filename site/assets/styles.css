@@ -4130,6 +4130,87 @@ pre,
   }
 }
 
+/* 1.34.22 public guide: native UI exports replace the illustrative HTML windows. */
+.release-page .hero {
+  display: block;
+  width: var(--content);
+  min-height: 0;
+  margin-inline: auto;
+  padding: 138px 0 64px;
+  overflow: visible;
+  background: transparent;
+}
+
+.release-page .hero::before,
+.release-page .hero::after {
+  display: none;
+}
+
+.release-page .hero-copy {
+  display: block;
+  max-width: 870px;
+  padding: 0;
+  margin: 0 0 36px;
+}
+
+.release-page .hero-copy h1 {
+  max-width: 850px;
+  font-size: clamp(32px, 4.5vw, 60px);
+  line-height: 1.17;
+  letter-spacing: -.045em;
+}
+
+.release-page .hero-lead { max-width: 680px; margin-top: 22px; }
+.release-page .hero-copy .eyebrow { letter-spacing: 0; font-family: inherit; }
+.release-page .hero-product { width: 100%; max-width: none; min-width: 0; margin: 0; padding: 0; transform: none; }
+.native-figure { width: 100%; margin: 0; }
+.native-figure > a { display: block; overflow: hidden; border: 1px solid var(--line); border-radius: 10px; background: white; }
+.native-figure img { display: block; width: 100%; height: auto; }
+.native-figure > a:hover { border-color: var(--blue); }
+.native-figure figcaption, .capture-method { margin: 10px 0 0; color: var(--ink-soft); font-size: 12px; line-height: 1.6; }
+.capture-method a, .native-description > a, .change-list a, .setup-section p a, .privacy-section a, .faq-list p a { text-decoration: underline; text-underline-offset: 3px; }
+.native-tour .section-heading, .release-updates .section-heading { max-width: 780px; }
+.native-tour .tour-tabs { margin-bottom: 0; flex-wrap: wrap; }
+.native-panel { padding-top: 24px; }
+.native-panel[hidden] { display: none; }
+.native-description { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-bottom: 20px; }
+.native-description > div { max-width: 740px; }
+.native-description h3 { margin: 0 0 8px; font-size: 24px; line-height: 1.35; letter-spacing: -.035em; }
+.native-description p { margin: 0; color: var(--ink-soft); line-height: 1.7; }
+.native-description > a { flex-shrink: 0; color: var(--blue-deep); font-weight: 650; }
+.change-list { border-top: 2px solid var(--ink); }
+.change-list article { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 24px; padding: 28px 0; border-bottom: 1px solid var(--line); }
+.change-list article > span { color: var(--blue-deep); font-weight: 650; font-size: 16px; }
+.change-list h3 { margin: 0 0 7px; font-size: 22px; letter-spacing: -.025em; }
+.change-list p { max-width: 740px; margin: 0 0 10px; color: var(--ink-soft); line-height: 1.75; }
+.change-list a { color: var(--blue-deep); font-size: 14px; }
+.guide-capture { margin: 24px 0 32px; }
+.guide-content { min-width: 0; }
+.guide-content p, .guide-content li { word-break: keep-all; overflow-wrap: anywhere; }
+.guide-section h2, .guide-section h3, .release-page h1, .native-description h3 { word-break: keep-all; overflow-wrap: anywhere; }
+.guide-content [id] { scroll-margin-top: 100px; }
+.guide-rail { max-height: calc(100vh - 105px); overflow-y: auto; }
+.guide-page .guide-map { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.guide-map > a { gap: 8px; }
+.guide-page .guide-map > a { border: 0; border-top: 1px solid var(--line); }
+.guide-callout strong { color: inherit; }
+
+@media (max-width: 760px) {
+  .release-page .hero { padding-top: 112px; padding-bottom: 36px; }
+  .release-page .hero-copy { margin-bottom: 26px; }
+  .release-page .hero-copy h1 { font-size: clamp(30px, 7vw, 46px); }
+  .native-description { display: block; }
+  .native-description h3 { font-size: 21px; }
+  .native-description > a { display: inline-block; margin-top: 12px; }
+  .native-tour .tour-tabs button { flex: 1 0 auto; padding: 12px; }
+  .native-figure figcaption, .capture-method { font-size: 11px; }
+  .change-list article { grid-template-columns: 1fr; gap: 8px; padding-block: 22px; }
+  .change-list h3 { font-size: 20px; }
+  .guide-page .guide-map { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .guide-page .guide-map-title { grid-column: 1 / -1; }
+  .guide-rail { max-height: none; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

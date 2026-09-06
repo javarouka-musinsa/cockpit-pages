@@ -52,17 +52,6 @@
     });
   }
 
-  const demoTime = document.querySelector("[data-job-time]");
-  if (demoTime && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    let seconds = 42;
-    window.setInterval(() => {
-      seconds += 1;
-      const minutes = Math.floor(seconds / 60);
-      const remainder = String(seconds % 60).padStart(2, "0");
-      demoTime.textContent = `${minutes}:${remainder}`;
-    }, 1000);
-  }
-
   const guideNavigation = document.querySelector("[data-guide-nav]");
   if (guideNavigation && "IntersectionObserver" in window) {
     const links = [...guideNavigation.querySelectorAll("a[href^='#']")];

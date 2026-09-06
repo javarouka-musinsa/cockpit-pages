@@ -11,17 +11,17 @@
   <meta property="og:title" content="Cockpit — 내 회사 업무의 흐름이 한 화면에">
   <meta property="og:description" content="코드 리뷰부터 대응 알림, 로컬 개발, 로그, 배포와 티켓까지 이어지는 macOS 업무 공간.">
   <meta property="og:url" content="https://javarouka-musinsa.github.io/cockpit-pages/">
-  <meta property="og:image" content="https://javarouka-musinsa.github.io/cockpit-pages/assets/social-card.png?v=guide-1">
+  <meta property="og:image" content="https://javarouka-musinsa.github.io/cockpit-pages/assets/social-card.png?v=guide-13422">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <title>Cockpit — 내 회사 업무의 흐름이 한 화면에</title>
   <link rel="canonical" href="https://javarouka-musinsa.github.io/cockpit-pages/">
   <!-- Keep the bundle revision in sync when public assets change so Pages never mixes releases. -->
-  <link rel="icon" href="assets/cockpit-mark.svg?v=guide-1" type="image/svg+xml">
-  <link rel="stylesheet" href="assets/styles.css?v=guide-1">
-  <script src="assets/app.js?v=guide-1" defer></script>
+  <link rel="icon" href="assets/cockpit-mark.svg?v=guide-13422" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/styles.css?v=guide-13422">
+  <script src="assets/app.js?v=guide-13422" defer></script>
 </head>
-<body>
+<body class="release-page">
   <a class="skip-link" href="#main">본문으로 건너뛰기</a>
 
   <header class="site-header" data-header>
@@ -48,14 +48,14 @@
   <main id="main">
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-copy">
-        <p class="eyebrow"><span class="live-dot"></span> Cockpit 1.32 · macOS</p>
-        <h1 id="hero-title">내 회사 업무의 흐름이<br><span>한 화면에.</span></h1>
+        <p class="eyebrow"><span class="live-dot"></span> 문서 기준 1.34.22 · 2026.09.06 갱신</p>
+        <h1 id="hero-title">리뷰와 운영 알림,<br>다음 행동까지 한 화면에서.</h1>
         <p class="hero-lead">
           코드 리뷰, 대응 알림, 로컬 실행, 로그, 배포와 티켓처럼 하루 동안 오가는 업무를
           메뉴 막대의 한 작업 공간에서 보고 실행하고 다시 이어갑니다.
         </p>
         <div class="hero-actions">
-          <a class="button button-primary" href="#overview">화면 둘러보기 <span aria-hidden="true">↓</span></a>
+          <a class="button button-primary" href="#overview">실제 UI 보기</a>
           <a class="button button-quiet" href="guide/">사용 문서</a>
           <a class="button button-quiet" href="#setup">설치 조건 보기</a>
         </div>
@@ -66,98 +66,10 @@
         </ul>
       </div>
 
-      <div class="hero-product" aria-label="Cockpit 대시보드 예시">
-        <div class="app-window">
-          <div class="ai-run-banner">
-            <strong><span aria-hidden="true">⚡</span> 자동 AI 실행 중 — 토큰이 자동으로 소모될 수 있습니다</strong>
-            <span>PR 자동 리뷰&nbsp; ›</span>
-          </div>
-          <div class="window-summary">
-            <div class="summary-copy">
-              <div class="summary-title">
-                <strong>Cockpit</strong>
-                <span class="mode-pill">auto-mine</span>
-              </div>
-              <p>대시보드 표시 범위 최근 5일 · AI 리뷰 누적 525건</p>
-              <p>판정 결과 · <b class="success-text">승인 342건</b> · <b class="danger-text">보완 필요 183건</b></p>
-              <div class="today-line">
-                <span>오늘 2건 · $0.42 환산</span>
-                <strong>AI: Codex</strong>
-              </div>
-            </div>
-            <div class="summary-actions" aria-hidden="true">
-              <div class="action-icons">
-                <span class="ai-status"><i></i>Codex</span>
-                <span>〉_</span>
-                <span>▣⌕</span>
-                <span>⌁</span>
-                <span class="danger-text">♧ 12</span>
-                <span class="accent-text">▱ 6</span>
-              </div>
-              <div class="review-count"><strong>2</strong><span>내 리뷰</span></div>
-            </div>
-          </div>
-          <div class="filter-row">
-            <span class="filter active">전체 <b>8</b></span>
-            <span class="filter danger">BLOCK <b>1</b></span>
-            <span class="filter success">머지 가능 <b>3</b></span>
-            <span class="filter warning-filter">리뷰 미지정 <b>0</b></span>
-            <span class="filter danger">CI 실패 <b>1</b></span>
-            <span class="filter">Draft <b>1</b></span>
-          </div>
-          <div class="window-body">
-            <div class="pr-list">
-              <div class="section-label"><span class="dot blue"></span>내가 리뷰어 <b>2</b><span>⌄</span></div>
-              <article class="repo-card">
-                <header><strong>acme/checkout-api <small>1</small></strong><span>↗</span></header>
-                <div class="pr-row">
-                  <div class="pr-meta"><b>#184</b><span>↗</span><span>@reviewer</span><em class="chip warning">재리뷰</em><em class="chip ok">CI✓</em></div>
-                  <p>환불 정책 검증 경로 보강</p>
-                </div>
-              </article>
-              <article class="repo-card">
-                <header><strong>studio/web-console <small>1</small></strong><span>↗</span></header>
-                <div class="pr-row">
-                  <div class="pr-meta"><b>#72</b><span>↗</span><span>@frontend</span><em class="chip block">BLOCK</em><em class="chip bad">CI×</em></div>
-                  <p>고객 문의 첨부 화면 개선</p>
-                </div>
-              </article>
-              <div class="section-label accent-section"><span class="dot violet"></span>지식 제안 대기 <b>2</b><span>›</span></div>
-              <div class="section-label accent-section"><span class="dot violet"></span>내 PR · 모든 저장소 <b>1</b><span>⌄</span></div>
-              <article class="repo-card compact-card">
-                <header><strong>acme/orders-api <small>1</small></strong><span>↗</span></header>
-                <div class="pr-row">
-                  <div class="pr-meta"><b>#206</b><span>↗</span><span>@me</span><em class="chip draft">DRAFT</em><em class="chip ok">CI✓</em></div>
-                  <p>주문 상태 전환 검증 추가</p>
-                </div>
-              </article>
-              <div class="section-label muted"><span class="dot green"></span>승인됨 · 머지 가능 <b>3</b><span>›</span></div>
-              <div class="section-label muted"><span class="dot gray"></span>그 외 리뷰 <b>3</b><span>›</span></div>
-            </div>
-            <aside class="job-rail">
-              <header><span class="spinner"></span><strong>작업</strong><span class="rail-count">실행 2</span><button type="button">◷ 이력</button></header>
-              <p class="rail-label">실행 중 <b>2</b></p>
-              <article class="job-card job-running" data-demo-job>
-                <div><span class="spinner"></span><strong>수동 리뷰</strong><span class="job-stop">×</span><em>봇</em></div>
-                <b>#184 <small>checkout-api</small></b>
-                <p><span data-job-time>0:42</span> · Codex · sol · medium</p>
-                <p>고위험 · 추가 기준 3개</p>
-              </article>
-              <article class="job-card">
-                <div><span class="spinner slow"></span><strong>Jira 티켓 생성</strong><span class="job-stop">×</span><em>앱</em></div>
-                <b>환불 검증 경로 리팩토링</b>
-                <p>0:18 · Codex · 기본 모델</p>
-                <p>#184 · 스프린트 42 · 라벨 2개</p>
-              </article>
-            </aside>
-          </div>
-          <div class="window-footer">
-            <span>↻ &nbsp;9:41</span>
-            <div><span>⌂</span><span>⚙</span><span>닫기</span></div>
-          </div>
-        </div>
-        <p class="mock-caption">예시 데이터로 재현한 Cockpit 화면입니다.</p>
-      </div>
+      <div class="hero-product native-hero">
+<figure class="native-figure"><a href="assets/screens/dashboard.png" target="_blank" rel="noopener" aria-label="대시보드 원본 이미지, 새 탭에서 열기"><img src="assets/screens/dashboard.png" width="2160" height="1280" alt="실제 Cockpit 대시보드. 가상 저장소의 내 리뷰 요청과 본인 Draft PR, AI 잔여 한도를 표시합니다." fetchpriority="high"></a><figcaption>대시보드 · 실제 1.34.22 UI · 예시 데이터 · 이미지 선택 시 확대</figcaption></figure>
+<p class="capture-method">앱의 SwiftUI 컴포넌트를 공개용 예시 데이터로 렌더링했습니다. 실계정 캡처가 아닙니다. <a href="guide/#images">이미지 제작 기준</a></p>
+</div>
     </section>
 
     <section class="flight-strip" aria-label="Cockpit 핵심 흐름">
@@ -167,215 +79,21 @@
       <div><span>04</span><strong>Recover</strong><small>중단 후에도 상태를 복구</small></div>
     </section>
 
-    <section class="section intro-section" id="overview" aria-labelledby="overview-title">
-      <div class="section-heading">
-        <p class="eyebrow">화면을 옮겨 다니지 않는 흐름</p>
-        <h2 id="overview-title">정보를 더 보여주는 대신,<br>다음 행동을 더 분명하게.</h2>
-        <p>
-          Cockpit은 PR, 대응 알림, 로컬 서비스와 진행 중인 작업을 한 흐름에
-          연결합니다. 아래 탭으로 실제 앱에 가까운 주요 화면을 살펴보세요.
-        </p>
-      </div>
+    <section class="section native-tour" id="overview" aria-labelledby="overview-title">
+<div class="section-heading compact"><h2 id="overview-title">실제 화면으로 살펴보세요.</h2><p>설정 위치와 동작 결과를 함께 안내합니다. 아래는 실제 앱 컴포넌트에 예시 데이터를 넣은 화면이며, 실제 업무 내역이나 실행 결과가 아닙니다.</p></div>
+<div data-tour><div class="tour-tabs" role="tablist" aria-label="Cockpit UI 예시"><button role="tab" id="tab-alerts" aria-controls="tour-alerts" aria-selected="true" data-tab="alerts">오류 대응</button><button role="tab" id="tab-warning" aria-controls="tour-warning" aria-selected="false" data-tab="warning" tabindex="-1">심화 조사 설정</button><button role="tab" id="tab-ai" aria-controls="tour-ai" aria-selected="false" data-tab="ai" tabindex="-1">AI·사용량</button><button role="tab" id="tab-loki" aria-controls="tour-loki" aria-selected="false" data-tab="loki" tabindex="-1">Loki 연결</button><button role="tab" id="tab-history" aria-controls="tour-history" aria-selected="false" data-tab="history" tabindex="-1">작업 이력</button></div>
+<article class="native-panel active" id="tour-alerts" role="tabpanel" aria-labelledby="tab-alerts" data-panel="alerts"><div class="native-description"><div><h3>재발에는 새 티켓, 과거 대응은 이력으로</h3><p>완료된 이슈가 다시 발생하면 과거 티켓은 보존하고 새 티켓을 연관 연결할 수 있습니다.</p></div><a href="guide/#recurrence">사용 방법</a></div><figure class="native-figure"><a href="assets/screens/alerts.png" target="_blank" rel="noopener" aria-label="오류 대응 원본 이미지, 새 탭에서 열기"><img src="assets/screens/alerts.png" width="2160" height="640" alt="가상의 FAQ 조회 지연 이슈와 새 OPS-128 티켓, 과거 티켓 1건의 이력 메뉴가 표시된 실제 오류 대응 UI." loading="lazy"></a><figcaption>오류 대응 · 실제 1.34.22 UI · 예시 데이터 · 이미지 선택 시 확대</figcaption></figure></article>
+<article class="native-panel" id="tour-warning" role="tabpanel" aria-labelledby="tab-warning" data-panel="warning" hidden><div class="native-description"><div><h3>어디까지 조사할지는 직접 선택합니다</h3><p>WARNING 자동 분석과 심화 조사는 각각 기본 꺼짐입니다. 심화 모드도 운영 DB·캐시에 직접 접속하거나 변경하지 않습니다.</p></div><a href="guide/#deep">사용 방법</a></div><figure class="native-figure"><a href="assets/screens/warning-settings.png" target="_blank" rel="noopener" aria-label="심화 조사 설정 원본 이미지, 새 탭에서 열기"><img src="assets/screens/warning-settings.png" width="2160" height="1720" alt="오류 대응 설정의 WARNING 자동 분석·Slack 게시와 WARNING 심화 조사 옵션 및 데이터 전달·권한 안내." loading="lazy"></a><figcaption>심화 조사 설정 · 실제 1.34.22 UI · 예시 데이터 · 이미지 선택 시 확대</figcaption></figure></article>
+<article class="native-panel" id="tour-ai" role="tabpanel" aria-labelledby="tab-ai" data-panel="ai" hidden><div class="native-description"><div><h3>오늘 실행 기록과 계정 잔여 한도는 다릅니다</h3><p>오늘 Cockpit을 사용하지 않아도 조회 가능한 계정 한도는 표시합니다. 조회할 수 없는 한도를 0%로 보여 주지 않습니다.</p></div><a href="guide/#usage">사용 방법</a></div><figure class="native-figure"><a href="assets/screens/ai-settings.png" target="_blank" rel="noopener" aria-label="AI·사용량 원본 이미지, 새 탭에서 열기"><img src="assets/screens/ai-settings.png" width="2160" height="1740" alt="AI 연동 설정. CLI 로그인 안내, AI 실행 토글, 예시 계정의 잔여 한도와 오늘 사용 기록." loading="lazy"></a><figcaption>AI·사용량 · 실제 1.34.22 UI · 예시 데이터 · 이미지 선택 시 확대</figcaption></figure></article>
+<article class="native-panel" id="tour-loki" role="tabpanel" aria-labelledby="tab-loki" data-panel="loki" hidden><div class="native-description"><div><h3>Loki 토큰은 이 Mac에서 연결합니다</h3><p>Grafana 서비스 계정 토큰을 설정 화면에서 저장합니다. 토큰 없는 브라우저 수집과 API 연결은 서로 다른 상태입니다.</p></div><a href="guide/#loki">사용 방법</a></div><figure class="native-figure"><a href="assets/screens/loki-settings.png" target="_blank" rel="noopener" aria-label="Loki 연결 원본 이미지, 새 탭에서 열기"><img src="assets/screens/loki-settings.png" width="2160" height="1600" alt="Loki 연결 설정. grafana.example.com 예시 주소와 비어 있는 토큰 입력 영역. 실제 토큰은 사용하지 않았습니다." loading="lazy"></a><figcaption>Loki 연결 · 실제 1.34.22 UI · 예시 데이터 · 이미지 선택 시 확대</figcaption></figure></article>
+<article class="native-panel" id="tour-history" role="tabpanel" aria-labelledby="tab-history" data-panel="history" hidden><div class="native-description"><div><h3>수신 이후 분석·게시가 끝났는지 확인합니다</h3><p>Slack 경고 수신만으로 분석 성공을 뜻하지 않습니다. 작업 이력에서 성공·실패·보류 이유와 실행 당시 AI 정보를 확인하세요.</p></div><a href="guide/#work">사용 방법</a></div><figure class="native-figure"><a href="assets/screens/history.png" target="_blank" rel="noopener" aria-label="작업 이력 원본 이미지, 새 탭에서 열기"><img src="assets/screens/history.png" width="2160" height="840" alt="가상의 WARNING 자동 분석, 재발 티켓 생성, 수동 리뷰 완료 기록을 실제 작업 이력 UI로 표시합니다." loading="lazy"></a><figcaption>작업 이력 · 실제 1.34.22 UI · 예시 데이터 · 이미지 선택 시 확대</figcaption></figure></article>
+</div></section>
 
-      <div class="product-tour" data-tour>
-        <div class="tour-tabs" role="tablist" aria-label="Cockpit 화면">
-          <button role="tab" aria-selected="true" aria-controls="tour-dashboard" id="tab-dashboard" data-tab="dashboard">대시보드</button>
-          <button role="tab" aria-selected="false" aria-controls="tour-work" id="tab-work" data-tab="work" tabindex="-1">작업·이력</button>
-          <button role="tab" aria-selected="false" aria-controls="tour-alerts" id="tab-alerts" data-tab="alerts" tabindex="-1">대응 알림</button>
-          <button role="tab" aria-selected="false" aria-controls="tour-review" id="tab-review" data-tab="review" tabindex="-1">PR 리뷰</button>
-          <button role="tab" aria-selected="false" aria-controls="tour-monitor" id="tab-monitor" data-tab="monitor" tabindex="-1">에러 모니터</button>
-          <button role="tab" aria-selected="false" aria-controls="tour-tools" id="tab-tools" data-tab="tools" tabindex="-1">개발 도구</button>
-          <button role="tab" aria-selected="false" aria-controls="tour-settings" id="tab-settings" data-tab="settings" tabindex="-1">설정</button>
-        </div>
-
-        <div class="tour-stage">
-          <article class="tour-panel active" id="tour-dashboard" role="tabpanel" aria-labelledby="tab-dashboard" data-panel="dashboard">
-            <div class="tour-copy">
-              <span class="tour-kicker">실제 구조에 가깝게</span>
-              <h3>PR 목록 옆에 지금 실행 중인 작업</h3>
-              <p>필터와 섹션, 저장소별 PR 행, 우측 작업 레일을 큰 창과 메뉴 막대 패널에서 같은 상태로 봅니다.</p>
-              <ul><li>팀 범위 밖이어도 내가 만든 모든 open·Draft PR 표시</li><li>Feature Flag·인프라 설정 저장소는 최상단 고정</li><li>리뷰·CI·충돌·재리뷰 신호를 같은 행에 표시</li></ul>
-            </div>
-            <div class="screen app-snapshot dashboard-snapshot" aria-hidden="true">
-              <div class="snapshot-banner">⚡ 자동 AI 실행 중 — 토큰이 소모될 수 있습니다 <span>PR 자동 리뷰 ›</span></div>
-              <div class="snapshot-summary"><div><b>Cockpit</b><small>최근 5일 · AI 리뷰 525건</small><small>승인 <i>342</i> · 보완 필요 <em>183</em></small></div><strong>2<small>내 리뷰</small></strong></div>
-              <div class="snapshot-filters"><b>전체 12</b><span>BLOCK 0</span><span>머지 가능 6</span><span>리뷰 미지정 0</span><span>CI 실패 2</span><span>Draft 0</span></div>
-              <div class="snapshot-columns">
-                <div class="snapshot-prs">
-                  <h4>내가 리뷰어 <small>2</small><span>⌄</span></h4>
-                  <div class="snapshot-repo"><b>sample/config-control <small>1</small></b><span>↗</span></div>
-                  <div class="snapshot-pr"><b>#418</b><span>@reviewer</span><i>재리뷰</i><em>CI✓</em><p>런타임 설정 검증 경로 보강</p></div>
-                  <h4 class="violet-title">내 PR · 모든 저장소 <small>1</small><span>⌄</span></h4>
-                  <div class="snapshot-repo"><b>sample/order-api <small>1</small></b><span>↗</span></div>
-                  <div class="snapshot-pr"><b>#206</b><span>@me</span><i class="draft-chip">DRAFT</i><em>CI✓</em><p>주문 상태 전환 검증 추가</p></div>
-                  <h4 class="green-title">승인됨 · 머지 가능 <small>6</small><span>›</span></h4>
-                </div>
-                <aside class="snapshot-jobs">
-                  <header><b>◌ 작업 <i>실행 2</i></b><span>◷ 이력</span></header>
-                  <small>실행 중 2</small>
-                  <div class="snapshot-job"><b>◌ 수동 리뷰 <i>봇</i></b><strong>#418 <small>config-control</small></strong><span>3:22 · Codex · terra · medium</span><span>추가 기준 3개 · 누적 지식 5 KB</span></div>
-                  <div class="snapshot-job blue-job"><b>◌ Jira 티켓 생성 <i>앱</i></b><strong>런타임 설정 리팩토링</strong><span>0:18 · Codex · 기본 모델</span><span>#418 · 스프린트 42 · 라벨 2개</span></div>
-                </aside>
-              </div>
-              <div class="snapshot-dock"><span>↻ 14:00</span><span>⌂　⚙　닫기　종료</span></div>
-            </div>
-          </article>
-
-          <article class="tour-panel" id="tour-work" role="tabpanel" aria-labelledby="tab-work" data-panel="work" hidden>
-            <div class="tour-copy">
-              <span class="tour-kicker">모든 백그라운드 작업</span>
-              <h3>무엇을, 어떤 설정으로, 어떻게 끝냈는지</h3>
-              <p>리뷰뿐 아니라 Jira, Slack, Loki, AI 분석, 지식 관리, GitHub 작업을 같은 카드와 이력 형식으로 추적합니다.</p>
-              <ul><li>대상·단계·경과시간·실행 방식·AI 모델 표시</li><li>처리 수치와 완료 결과를 최근 완료순으로 보존</li><li>앱 재시작으로 중단된 작업도 맥락과 함께 복구</li></ul>
-            </div>
-            <div class="screen history-snapshot" aria-hidden="true">
-              <div class="snapshot-banner">⚡ 자동 AI 실행 중 — 토큰이 소모될 수 있습니다 <span>PR 자동 리뷰 ›</span></div>
-              <div class="snapshot-nav"><span>‹ 대시보드</span><b>작업 이력</b><i></i></div>
-              <div class="history-heading"><b>최근 100건</b><span>완료 시각 최신순 · 실행 당시 AI tier와 종료 원인</span><em>▣ 봇 로그　↻</em></div>
-              <div class="history-list">
-                <div class="history-row"><i>✓</i><div><b>수동 리뷰 <em>성공</em> <a>config-control #418</a></b><span>2시간 전　·　20:58　·　Codex　·　sol　·　medium　·　고위험</span><small>추가 프롬프트 192자</small><small class="violet-fact">누적 지식 7 KB</small></div></div>
-                <div class="history-row"><i>✓</i><div><b>Jira 티켓 생성 <em>성공</em> <a>CSE-2048</a></b><span>2시간 전　·　6:24　·　Codex　·　terra　·　medium</span><small>스프린트 42</small><small>라벨 2개</small></div></div>
-                <div class="history-row"><i>✓</i><div><b>AI 알림 분석 <em>성공</em> <a>대응 필요 8이슈</a></b><span>3시간 전　·　5:15　·　Codex　·　terra　·　medium</span><small>클러스터 3개</small><small>생략 0개</small></div></div>
-                <div class="history-row"><i>✓</i><div><b>Local Run <em>종료</em> <a>order-api</a></b><span>오늘　·　2:49　·　비AI　·　사용자 중단</span><small>JDK 25</small><small>DEV</small></div></div>
-              </div>
-            </div>
-          </article>
-
-          <article class="tour-panel" id="tour-alerts" role="tabpanel" aria-labelledby="tab-alerts" data-panel="alerts" hidden>
-            <div class="tour-copy">
-              <span class="tour-kicker">대응 필요 알림</span>
-              <h3>반복 이벤트를 이슈와 원인 단위로</h3>
-              <p>Slack·Loki 이벤트를 시그니처로 묶고 조사중, 해결, 무시, Jira 티켓 연결과 AI 원인 분석을 한 화면에서 처리합니다.</p>
-              <ul><li>같은 오류 N건을 한 이슈로 묶고 원인 클러스터 구성</li><li>처리 후 새 이벤트는 재발로 감지, 동일 시그니처는 3일간 숨김</li><li>현재 표시 이슈에 연결된 Done 티켓만 조회해 정리</li></ul>
-            </div>
-            <div class="screen alerts-snapshot" aria-hidden="true">
-              <div class="snapshot-nav"><span>‹ 대시보드</span><b>대응 필요</b><i>최근 3일</i></div>
-              <div class="alert-toolbar"><b>이슈 8개 · 이벤트 33건</b><span>✦ AI 분석</span><span>묶기</span><span>요약 공유</span><span>✓ 완료 티켓 정리</span></div>
-              <div class="alert-columns">
-                <div class="alert-list">
-                  <h4>조사중 <small>2</small></h4>
-                  <div class="alert-cluster"><header><i></i><b>주문 API 지연 전파</b><span>3이슈 · 14건</span><em>AI</em></header><p>checkout-api timeout이 customer-bff까지 전파</p><footer><span>조사중</span><span>CSE-2048</span><span>Done 이후 재발</span></footer></div>
-                  <h4>미착수 <small>6</small></h4>
-                  <div class="alert-issue"><header><i></i><b>결제 승인 응답 지연</b><span>×7</span></header><p>payment-api · /payments/approve · 8분 전</p><footer><span>조사중</span><span>해결</span><span>무시</span><span>티켓</span></footer></div>
-                  <div class="alert-issue"><header><i></i><b>배송 조회 5xx 증가</b><span>×3</span></header><p>logistics-api · /deliveries · 21분 전</p></div>
-                </div>
-                <aside class="alert-analysis"><b>✦ AI 분석</b><span>14:02 · 이슈 8개</span><p><strong>우선순위</strong><br>주문 지연 클러스터부터 하류 영향 확인</p><p><strong>소스 구분</strong><br>Loki 5 · Slack 3</p><small>원인 묶음 제안 3개</small></aside>
-              </div>
-            </div>
-          </article>
-
-          <article class="tour-panel" id="tour-review" role="tabpanel" aria-labelledby="tab-review" data-panel="review" hidden>
-            <div class="tour-copy">
-              <span class="tour-kicker ai-kicker">✦ 선택형 AI</span>
-              <h3>결과는 풍부하게, GitHub 반영은 명시적으로</h3>
-              <p>모델·effort·레포 기준·누적 지식과 인라인 코멘트를 확인합니다. 자동 리뷰의 보완 판정은 승인만 보류하고 일반 코멘트로 남깁니다.</p>
-              <ul><li>일반 리뷰, Draft·본인 PR 사전 리뷰</li><li>새 커밋 뒤 다시 지정되면 최신 head SHA 재리뷰</li><li>스레드 답글·resolve와 일반 코멘트 minimize 지원</li></ul>
-            </div>
-            <div class="screen screen-review detailed-review" aria-hidden="true">
-              <div class="review-head"><span>‹ 대시보드</span><b>#418 · PR 리뷰</b><i>✦ Codex</i></div>
-              <div class="review-context"><b>sample/config-control</b><span>head a18f2c7</span><span>sol · medium</span><span>고위험</span></div>
-              <div class="review-body">
-                <small>판정</small><strong>보완 필요</strong>
-                <p>설정 병합 과정에서 빈 배열이 기존 값을 덮는 경계 조건을 확인해야 합니다.</p>
-                <div class="review-findings"><b>발견 2건</b><span><i>1</i> fallback 병합 순서가 환경별로 달라질 수 있음</span><span><i>2</i> 빈 설정 회귀 테스트가 없음</span></div>
-                <div class="context-row"><span>추가 기준 3개</span><span>누적 지식 7 KB</span><span>인라인 코멘트 2개</span></div>
-                <div class="review-actions"><button>작업 프롬프트</button><button>일반 코멘트 게시</button></div>
-              </div>
-            </div>
-          </article>
-
-          <article class="tour-panel" id="tour-monitor" role="tabpanel" aria-labelledby="tab-monitor" data-panel="monitor" hidden>
-            <div class="tour-copy">
-              <span class="tour-kicker">Loki 선택 연동</span>
-              <h3>오류의 양과 시스템을 함께</h3>
-              <p>시간대별 오류 흐름을 보고 서비스를 필터링합니다. 원문 로그와 읽기 전용 Grafana 조사 화면으로 맥락이 이어집니다.</p>
-              <ul><li>환경·기간·전체 또는 개별 서비스 필터</li><li>차트 hover 시 시스템별 건수 표시</li><li>로그 열기는 비AI, 원인 조사는 필요할 때만 AI</li></ul>
-            </div>
-            <div class="screen screen-monitor" aria-hidden="true">
-              <div class="snapshot-nav"><span>‹ 대시보드</span><b>오류 모니터</b><i>↻</i></div>
-              <div class="chart-toolbar"><span class="selected">prd</span><span>6시간</span><b>전체 서비스⌄</b></div>
-              <div class="chart">
-                <i class="grid-line l1"></i><i class="grid-line l2"></i><i class="grid-line l3"></i>
-                <svg viewBox="0 0 600 210" role="img" aria-label="예시 오류 추이 차트"><polyline points="0,180 70,168 130,85 190,160 255,150 330,42 395,170 470,128 540,151 600,105" fill="none" stroke="#0b6cf4" stroke-width="5"/><polyline points="0,180 70,155 130,118 190,165 255,170 330,110 395,172 470,152 540,160 600,158" fill="none" stroke="#e4443a" stroke-width="4"/><polyline points="0,180 70,180 130,160 190,132 255,170 330,150 395,169 470,143 540,150 600,167" fill="none" stroke="#a844d3" stroke-width="4"/></svg>
-              </div>
-              <div class="chart-legend"><span><i class="blue-bg"></i>order-api</span><span><i class="red-bg"></i>customer-bff</span><span><i class="violet-bg"></i>web-console</span></div>
-            </div>
-          </article>
-
-          <article class="tour-panel" id="tour-tools" role="tabpanel" aria-labelledby="tab-tools" data-panel="tools" hidden>
-            <div class="tour-copy">
-              <span class="tour-kicker">12 services · one launcher</span>
-              <h3>로컬 실행부터 배포와 코드 검색까지</h3>
-              <p>CS 8개와 29CM 4개 서비스를 실행 전 검증과 함께 띄우고, 로그·테스트 주문·배포·Sourcegraph를 같은 허브에서 사용합니다.</p>
-              <ul><li>JDK·AWS SSO·OneConf·Redis·Kafka 등 사전 검증</li><li>비AI, AI, 혼합 작업을 명확히 표기</li><li>실행 목록과 로그 tail은 앱을 닫아도 유지</li></ul>
-            </div>
-            <div class="screen screen-tools detailed-tools" aria-hidden="true">
-              <div class="tool-sidebar"><b>개발 도구</b><span class="selected">Local Run</span><span>Logs</span><span>Test Order&nbsp; <i>AI</i></span><span>Deploy&nbsp; <i>혼합</i></span><span>Code Search</span><span>Alert 조사&nbsp; <i>AI</i></span></div>
-              <div class="tool-main"><small>LOCAL RUN · 12 SERVICES</small><h4>실행할 서비스를 선택하세요</h4><div class="service-list"><span><i></i>core-api<em>JDK 25</em></span><span><i></i>backoffice-bff<em>JDK 25</em></span><span><i></i>voice-gateway<em>JDK 17</em></span><span><i></i>order-api<em>JDK 25</em></span><span><i></i>claim-service<em>JDK 25</em></span><span><i></i>payment-service<em>JDK 25</em></span></div><div class="run-card"><i></i><div><b>order-api</b><small>running · DEV · 2m 18s</small></div><button>로그</button><button>중단</button></div></div>
-            </div>
-          </article>
-
-          <article class="tour-panel" id="tour-settings" role="tabpanel" aria-labelledby="tab-settings" data-panel="settings" hidden>
-            <div class="tour-copy">
-              <span class="tour-kicker">선택 연동</span>
-              <h3>없는 기능은 실패하지 않고 쉬어갑니다</h3>
-              <p>GitHub만으로 대시보드를 시작하고 AI, Loki, Slack, Jira와 Sourcegraph는 필요한 순서대로 켤 수 있습니다.</p>
-              <ul><li>실제 성공 시각과 마지막 오류로 상태 진단</li><li>Codex·Claude 플랫폼과 모델 정책 선택</li><li>앱과 worker를 같은 Release로 원자 업데이트</li></ul>
-            </div>
-            <div class="screen screen-settings" aria-hidden="true">
-              <div class="snapshot-nav"><span>‹ 대시보드</span><b>설정</b><i>Cockpit 1.32.0</i></div>
-              <div class="settings-title"><b>연동 진단</b><span>↻ 다시 확인</span></div>
-              <div class="setting-row"><i class="ok-dot"></i><b>GitHub</b><span>API 인증 성공 · 방금</span><em>정상</em></div>
-              <div class="setting-row"><i class="ok-dot"></i><b>AI · Codex</b><span>ChatGPT 로그인 · auto-mine</span><em>정상</em></div>
-              <div class="setting-row"><i class="ok-dot"></i><b>Loki</b><span>오류 수집 가능 · 2분 전</span><em>정상</em></div>
-              <div class="setting-row"><i class="off-dot"></i><b>Slack</b><span>필요할 때 연결</span><em class="off">선택</em></div>
-              <div class="setting-row"><i class="off-dot"></i><b>Jira</b><span>REST 또는 AI 위임</span><em class="off">선택</em></div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section updates-section" id="recent" aria-labelledby="recent-title">
-      <div class="section-heading compact">
-        <p class="eyebrow">What changed recently</p>
-        <h2 id="recent-title">PR 도구에서<br>업무 흐름의 Cockpit으로.</h2>
-        <p>최근 릴리스는 더 많은 버튼보다, 앱 밖에서 끊기던 업무 맥락을 안으로 가져오는 데 집중했습니다.</p>
-      </div>
-      <div class="update-grid">
-        <article class="update-card update-wide">
-          <span>1.30.2 · DASHBOARD</span>
-          <h3>내가 만든 PR은 저장소 경계 밖에서도</h3>
-          <p>팀 등록 여부와 관계없이 현재 GitHub 사용자가 만든 모든 open·Draft PR을 “내 PR”에 표시합니다. 설정과 인프라를 함께 다루는 저장소는 최상단에서 먼저 봅니다.</p>
-          <div class="update-proof"><b>ALL REPOS</b><i>OPEN</i><i>DRAFT</i><em>PINNED CONFIG</em></div>
-        </article>
-        <article class="update-card">
-          <span>1.30.3 · ACTIVITY</span>
-          <h3>모든 백그라운드 작업을 같은 언어로</h3>
-          <p>Jira, Slack, Loki, AI 분석, 지식 관리와 GitHub 작업에도 대상·단계·모델·처리 수치·종료 결과를 남깁니다.</p>
-        </article>
-        <article class="update-card">
-          <span>1.30.3 · REVIEW</span>
-          <h3>자동 리뷰는 막지 않고 알려줍니다</h3>
-          <p>보완 필요 판정은 일반 코멘트와 알림으로 남기고 승인을 보류합니다. 자동 REQUEST_CHANGES로 사람의 머지를 막지 않습니다.</p>
-        </article>
-        <article class="update-card">
-          <span>1.30.4 · LOCAL RUN</span>
-          <h3>12개 서비스를 실행 전 검증과 함께</h3>
-          <p>CS 8개·29CM 4개 서비스의 JDK, AWS SSO, OneConf와 로컬 인프라 상태를 확인하고 실행합니다.</p>
-        </article>
-        <article class="update-card">
-          <span>1.30.5 · AUTO REVIEW</span>
-          <h3>새 커밋은 새 리뷰로 이어집니다</h3>
-          <p>이미 리뷰한 PR도 코드가 바뀌고 내가 다시 리뷰어가 되면 최신 head SHA 기준으로 자동 재리뷰합니다.</p>
-        </article>
-        <article class="update-card update-accent">
-          <span>1.32 · ALERTS</span>
-          <h3>완료와 재발을 같은 결과에서 구분합니다</h3>
-          <p>현재 표시 이슈의 Done 티켓만 확인하고 과거 로그를 즉시 정리합니다. 완료 이후 로그는 재발로 표시하고 제외·재발 수를 함께 알려줍니다.</p>
-        </article>
-      </div>
-    </section>
+    <section class="section release-updates" id="recent" aria-labelledby="recent-title"><div class="section-heading compact"><h2 id="recent-title">최근 바뀐 사용 흐름</h2><p>새 기능의 위치와 시작 조건까지 함께 확인하세요.</p></div><div class="change-list"><article><span>1.34.22</span><div><h3>Slack 분석을 쉬운 설명으로</h3><p>16세도 이해할 수 있는 문장으로 요약·영향·원인·다음 행동을 먼저 보여 줍니다. 기술 근거와 쿼리는 아래로 분리합니다.</p><a href="guide/#warning">가이드에서 확인</a></div></article>
+<article><span>1.34.22</span><div><h3>필요한 경고는 심화 조사</h3><p>등록한 GitHub 저장소의 코드·배포 기록과 Grafana 지표를 교차 확인합니다. 접근 권한이나 근거가 부족하면 미확인 이유를 남깁니다.</p><a href="guide/#deep">가이드에서 확인</a></div></article>
+<article><span>1.34.21</span><div><h3>Jira 티켓 없이 WARNING 자동 분석</h3><p>선택한 채널의 새 root FIRING·WARNING을 조사해 원문 Slack 스레드에 게시합니다. 기본 꺼짐이며 담당 PC 한 대에서만 켜세요.</p><a href="guide/#warning">가이드에서 확인</a></div></article>
+<article><span>1.34.20</span><div><h3>재발 티켓과 계정 잔여 한도</h3><p>과거 티켓은 이력으로 남기고 새 티켓을 연관 연결합니다. 오늘 실행 기록이 없어도 조회 가능한 계정 잔여 한도를 표시합니다.</p><a href="guide/#recurrence">가이드에서 확인</a></div></article>
+<article><span>1.34.19</span><div><h3>다른 Mac에서도 각자 연결</h3><p>AI CLI 로그인과 Loki 토큰 입력을 안내하고, GitHub–Slack 사용자 매핑과 팀 리뷰 요청 판정을 보강했습니다.</p><a href="guide/#connections">가이드에서 확인</a></div></article></div></section>
 
     <section class="section workflow-section" id="workflow" aria-labelledby="workflow-title">
       <div class="section-heading compact">
@@ -396,7 +114,7 @@
         </li>
         <li>
           <span class="step-index">03</span>
-          <div><small>Decide</small><h3>사람이 결과 확인</h3><p>리뷰 코멘트, 조사 결과, 배포 계획과 티켓 내용을 확인하고 외부 시스템에 반영할지 결정합니다.</p></div>
+          <div><small>Decide</small><h3>결과와 게시 여부 확인</h3><p>수동 작업은 내용을 확인해 반영합니다. 자동 리뷰·WARNING 자동 게시처럼 미리 켠 자동화는 설정한 조건에서 외부 서비스에 결과를 기록합니다.</p></div>
           <span class="step-badge mixed">혼합</span>
         </li>
         <li>
@@ -442,7 +160,7 @@
           <div class="card-icon tools-icon" aria-hidden="true">⌘</div>
           <span class="step-badge mixed">혼합</span>
           <h3>개발 도구</h3>
-          <p>12개 서비스 Local Run, 구조화 로그, 테스트 주문, 배포, Sourcegraph와 Grafana 조사를 모읍니다.</p>
+          <p>Workspace에 등록한 서비스의 Local Run, 구조화 로그, 테스트 주문, 배포, Sourcegraph와 Grafana 조사를 모읍니다.</p>
         </article>
         <article class="capability-card">
           <div class="card-icon history-icon" aria-hidden="true">↶</div>
@@ -470,7 +188,7 @@
         <div class="requirement-grid">
           <div><span>필수</span><strong>macOS 14+</strong><small>Apple Silicon</small></div>
           <div><span>필수</span><strong>GitHub CLI 인증</strong><small><code>gh auth login</code> · 사내 저장소 접근</small></div>
-          <div><span>필수</span><strong>Claude Code</strong><small>marketplace와 설치 스킬 실행</small></div>
+          <div><span>필수</span><strong>Claude Code</strong><small>아래 플러그인 설치 경로에 필요</small></div>
           <div><span>선택 연동</span><strong>Codex · Claude · Loki · Slack · Jira</strong><small>없어도 핵심 설치는 정상 완료</small></div>
         </div>
       </div>
@@ -494,7 +212,7 @@
 <span class="success">✓ app        ✓ worker
 ✓ GitHub     ○ AI (선택)
 ○ Loki       ○ Slack</span></code></pre>
-        <p>업데이트는 <code>/cs-pr-review-app:install update</code> · 제거는 <code>/cs-pr-review-app:install uninstall</code></p>
+        <p>각 PC에서 본인 계정으로 인증하세요. AI는 CLI 로그인, Loki는 서비스 계정 토큰을 사용합니다. <a href="guide/#connections">첫 연결 안내</a></p><p>업데이트는 <code>/cs-pr-review-app:install update</code> · 제거는 <code>/cs-pr-review-app:install uninstall</code></p>
       </div>
     </section>
 
@@ -502,11 +220,11 @@
       <div class="privacy-mark" aria-hidden="true"><span></span></div>
       <div>
         <p class="eyebrow">Local by design</p>
-        <h2 id="privacy-title">공개 페이지에는 제품 설명만,<br>업무 데이터는 로컬에.</h2>
+        <h2 id="privacy-title">공개 페이지에는 예시만,<br>실행할 때는 데이터 범위를 확인하세요.</h2>
       </div>
       <p>
         이 안내 페이지는 예시 데이터로만 구성됩니다. Cockpit의 저장소, PR 정보,
-        연동 토큰과 작업 이력은 이 페이지로 전송되지 않습니다.
+        연동 토큰과 작업 이력은 이 페이지로 전송되지 않습니다. 앱에서 AI를 실행하면 필요한 코드·로그가 선택한 AI로 전달되고, 게시 기능은 연결한 서비스에 결과를 보냅니다.
       </p>
     </section>
 
@@ -516,6 +234,9 @@
         <h2 id="faq-title">자주 묻는 질문</h2>
       </div>
       <div class="faq-list">
+<details><summary>WARNING 심화 조사를 켜면 모든 원인을 알 수 있나요?<span>＋</span></summary><p>아니요. 허용된 저장소와 Grafana에서 읽을 수 있는 근거만 확인합니다. 실제 DB·캐시에 직접 접속하지 않으며, 권한이나 근거가 없으면 미확인 이유를 남깁니다. <a href="guide/#deep">심화 조사 범위</a></p></details>
+<details><summary>팀원 모두 WARNING 자동 분석을 켜도 되나요?<span>＋</span></summary><p>같은 채널은 담당 PC 한 대에서만 켜세요. 중복 방지는 로컬 PC 기준이므로 여러 PC가 각각 분석·게시할 수 있습니다.</p></details>
+<details><summary>AI 토큰 입력 칸은 어디에 있나요?<span>＋</span></summary><p>AI는 Cockpit에 API 토큰을 저장하지 않고 각 사용자가 선택한 CLI의 로그인 계정을 사용합니다. 설정 → 연동 서비스 → AI의 안내를 확인하세요. WARNING 자동 조사는 현재 Claude를 사용합니다.</p></details>
         <details>
           <summary>AI 계정이 없어도 사용할 수 있나요?<span>＋</span></summary>
           <p>네. GitHub PR 조회, 상태 필터, 상세 확인 등 비AI 기능은 그대로 동작합니다. AI가 필요한 버튼은 비활성 상태와 이유를 표시합니다.</p>
@@ -542,7 +263,7 @@
       <span>Cockpit</span>
     </a>
     <p>Work, connected.</p>
-    <small>macOS용 개발 업무 작업 공간</small>
+    <small>문서 기준 1.34.22 · 2026.09.06 갱신</small>
   </footer>
 </body>
 </html>
