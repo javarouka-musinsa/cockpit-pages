@@ -11,12 +11,12 @@
   <meta property="og:title" content="Cockpit 사용 문서 — 앱과 worker 운용 가이드">
   <meta property="og:description" content="첫 설정부터 PR 리뷰, 대응 알림, 개발 도구와 문제 해결까지.">
   <meta property="og:url" content="https://javarouka-musinsa.github.io/cockpit-pages/guide/">
-  <meta property="og:image" content="https://javarouka-musinsa.github.io/cockpit-pages/assets/social-card.png?v=guide-1">
+  <meta property="og:image" content="https://javarouka-musinsa.github.io/cockpit-pages/assets/social-card.png?v=guide-13422">
   <title>Cockpit 사용 문서 — 앱과 worker 운용 가이드</title>
   <link rel="canonical" href="https://javarouka-musinsa.github.io/cockpit-pages/guide/">
-  <link rel="icon" href="../assets/cockpit-mark.svg?v=guide-1" type="image/svg+xml">
-  <link rel="stylesheet" href="../assets/styles.css?v=guide-1">
-  <script src="../assets/app.js?v=guide-1" defer></script>
+  <link rel="icon" href="../assets/cockpit-mark.svg?v=guide-13422" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/styles.css?v=guide-13422">
+  <script src="../assets/app.js?v=guide-13422" defer></script>
 </head>
 <body class="guide-page">
   <a class="skip-link" href="#guide-main">본문으로 건너뛰기</a>
@@ -33,7 +33,7 @@
       <a href="#start">시작하기</a>
       <a href="#settings">설정</a>
       <a href="#review">PR 리뷰</a>
-      <a href="#alerts">대응 알림</a>
+      <a href="#warning">WARNING 조사</a>
       <a href="#troubleshooting">문제 해결</a>
       <a class="nav-home" href="../">제품 소개</a>
     </nav>
@@ -42,10 +42,10 @@
   <main id="guide-main">
     <section class="guide-hero" aria-labelledby="guide-title">
       <div>
-        <p class="eyebrow"><span class="live-dot"></span> Cockpit flight manual · v1</p>
-        <h1 id="guide-title">앱은 조종석,<br><span>worker는 자동 항법.</span></h1>
+        <p class="eyebrow"><span class="live-dot"></span> 문서 기준 1.34.22 · 2026.09.06 갱신</p>
+        <h1 id="guide-title">처음 연결부터,<br><span>매일의 운영까지.</span></h1>
         <p>
-          Cockpit의 화면과 백그라운드 자동화가 어디서 만나고 어디서 나뉘는지부터 설명합니다.
+          내 계정으로 연결하고, 리뷰와 알림을 처리하고, 실행 결과까지 확인하는 방법을 안내합니다.
           처음 연결하는 사람은 위에서 아래로, 이미 쓰고 있다면 필요한 업무만 골라 읽으세요.
         </p>
         <div class="hero-actions">
@@ -58,36 +58,16 @@
         <div class="instrument-row"><i class="instrument-blue"></i><div><b>macOS 앱</b><span>보고 · 선택하고 · 실행</span></div><em>FOREGROUND</em></div>
         <div class="instrument-row"><i class="instrument-violet"></i><div><b>worker</b><span>큐 · 자동 리뷰 · 복구</span></div><em>BACKGROUND</em></div>
         <div class="instrument-row"><i class="instrument-green"></i><div><b>Workspace</b><span>조직 · 저장소 · 연동 범위</span></div><em>PROFILE</em></div>
-        <p>유휴 상태에서는 AI를 실행하지 않습니다. 자동 소모는 사용자가 켠 자동 리뷰 경로에서만 발생합니다.</p>
+        <p>AI는 수동 실행 또는 사용자가 켠 자동화에서 실행됩니다. PR 리뷰뿐 아니라 온콜 조사·WARNING 자동 분석도 AI를 사용하고 결과를 외부에 게시할 수 있습니다.</p>
       </div>
     </section>
 
-    <section class="guide-map" id="map" aria-labelledby="map-title">
-      <div class="guide-map-title"><small>DOCUMENT MAP</small><h2 id="map-title">업무를 기준으로 찾으세요.</h2></div>
-      <a href="#start"><span>01</span><b>첫 실행</b><small>설치 · 필수 연결 · 진단</small></a>
-      <a href="#settings"><span>02</span><b>설정</b><small>Workspace · 서비스별 연결</small></a>
-      <a href="#dashboard"><span>03</span><b>대시보드</b><small>PR · 상태 · 작업 레일</small></a>
-      <a href="#review"><span>04</span><b>PR 리뷰</b><small>수동 · 자동 · 재리뷰</small></a>
-      <a href="#alerts"><span>05</span><b>대응 알림</b><small>묶기 · 조사 · 티켓 · 재발</small></a>
-      <a href="#tools"><span>06</span><b>개발 도구</b><small>로그 · 실행 · 배포 · 검색</small></a>
-      <a href="#worker"><span>07</span><b>worker</b><small>소유권 · 복구 · 안전장치</small></a>
-      <a href="#troubleshooting"><span>08</span><b>문제 해결</b><small>인증 · 누락 · 정체</small></a>
-    </section>
+    <section class="guide-map" id="map" aria-labelledby="map-title"><div class="guide-map-title"><h2 id="map-title">필요한 업무부터 찾으세요.</h2></div><a href="#connections"><b>새 Mac 연결</b><small>AI 로그인 · Loki 토큰 · Slack</small></a><a href="#warning"><b>경고 자동 조사</b><small>시작 조건 · 게시 · 중복 방지</small></a><a href="#deep"><b>심화 조사</b><small>조회 범위 · 권한 · 한계</small></a><a href="#recurrence"><b>재발 대응</b><small>새 티켓 · 과거 이력</small></a><a href="#usage"><b>잔여 한도</b><small>계정 한도와 앱 사용량</small></a><a href="#troubleshooting"><b>문제 해결</b><small>진단 · 수신 · 결과 확인</small></a></section>
 
     <div class="guide-shell">
       <aside class="guide-rail" aria-label="문서 목차">
         <p>FLIGHT SECTIONS</p>
-        <nav data-guide-nav>
-          <a href="#start"><span>01</span>첫 실행</a>
-          <a href="#settings"><span>02</span>설정</a>
-          <a href="#dashboard"><span>03</span>대시보드</a>
-          <a href="#review"><span>04</span>PR 리뷰</a>
-          <a href="#work"><span>05</span>작업·이력</a>
-          <a href="#alerts"><span>06</span>대응 알림</a>
-          <a href="#tools"><span>07</span>개발 도구</a>
-          <a href="#worker"><span>08</span>worker</a>
-          <a href="#troubleshooting"><span>09</span>문제 해결</a>
-        </nav>
+        <nav data-guide-nav><a href="#start">첫 실행</a><a href="#connections">계정·연결</a><a href="#dashboard">대시보드</a><a href="#review">PR 리뷰</a><a href="#usage">잔여 한도</a><a href="#alerts">대응 알림</a><a href="#warning">WARNING 자동 분석</a><a href="#deep">심화 조사</a><a href="#recurrence">재발 티켓</a><a href="#work">작업 이력</a><a href="#tools">개발 도구</a><a href="#worker">앱과 worker</a><a href="#safety">데이터·게시 권한</a><a href="#troubleshooting">문제 해결</a><a href="#images">이미지 제작 기준</a></nav>
         <div class="guide-legend">
           <span><i class="required-dot"></i>필수</span>
           <span><i class="optional-dot"></i>선택</span>
@@ -112,7 +92,7 @@
           <header><small>02 · CONFIGURATION</small><h2>설정은 두 가지 관점으로 봅니다</h2><p>‘무슨 일을 할 것인가’와 ‘어떤 서비스에 연결할 것인가’를 분리했습니다. 같은 값을 여러 화면에 중복 입력하지 않습니다.</p></header>
           <div class="guide-split">
             <article><span>TASK VIEW</span><h3>업무별 설정</h3><p>PR 및 리뷰, 오류 대응, 개발 도구, AI 및 자동화처럼 사용 목적에서 시작합니다.</p><ul><li>어떤 기능이 켜지는지 확인</li><li>모드와 동작 정책 선택</li><li>필요한 서비스 설정으로 이동</li></ul></article>
-            <article><span>SERVICE VIEW</span><h3>서비스별 설정</h3><p>GitHub, Jira, Loki, Slack, AI별 연결값과 인증 상태를 한곳에서 관리합니다.</p><ul><li>필수값과 선택값 구분</li><li>마지막 성공·오류 확인</li><li>다중 조직·팀·프로젝트 범위 관리</li></ul></article>
+            <article><span>SERVICE VIEW</span><h3>서비스별 설정</h3><p>GitHub·Jira·Loki·AI는 연동 서비스에서, Slack은 오류 대응 설정에서 연결값과 상태를 확인합니다.</p><ul><li>필수값과 선택값 구분</li><li>마지막 성공·오류 확인</li><li>다중 조직·팀·프로젝트 범위 관리</li></ul></article>
           </div>
           <div class="guide-table" role="table" aria-label="연동별 필수 여부">
             <div class="guide-table-head" role="row"><span>서비스</span><span>필수 여부</span><span>비워두면</span></div>
@@ -126,6 +106,19 @@
           <p>조직·팀 자동 발견은 실행하지 않고 직접 등록한 저장소만 정기 폴링합니다. 내 PR은 저장소 범위와 무관하게 표시되며, 범위 밖 리뷰 요청은 ‘내 리뷰 요청 전체’를 명시적으로 켠 경우에만 합쳐집니다.</p>
           <div class="guide-callout safe"><b>다중 값 지원</b><p>organization, team, 고정 저장소와 Jira 프로젝트는 여러 개를 등록할 수 있습니다. 예시 이름은 입력 형식을 설명하는 플레이스홀더이며 실제 범위로 저장되지 않습니다.</p></div>
         </section>
+
+        <section class="guide-section" id="connections">
+<header><small>다른 Mac에서 시작하기</small><h2>인증은 각자, 설정은 필요한 만큼</h2><p>다른 사람의 PC에서 동작하던 인증은 새 Mac에 자동으로 옮겨지지 않습니다. 토큰을 복사하는 대신 본인 계정과 권한으로 연결하세요.</p></header>
+<h3 class="guide-subtitle">GitHub와 PR 소유권</h3><ol class="guide-compact-steps"><li><code>gh auth status</code>에서 사용할 host·계정을 확인합니다.</li><li>설정 → 연동 서비스 → GitHub에서 조직·팀·직접 저장소·고정 저장소를 등록합니다.</li><li>‘내 PR’은 현재 로그인한 작성자 기준, <code>auto-mine</code>은 본인 또는 소속 팀의 리뷰 요청 기준입니다.</li><li>범위 밖 리뷰 요청도 보려면 ‘내 리뷰 요청 전체’를 명시적으로 켭니다. 제외 저장소는 자동 조회·리뷰 범위에서 차단됩니다.</li></ol>
+<h3 class="guide-subtitle">AI: Cockpit 토큰 입력 대신 CLI 로그인</h3><div class="guide-path"><span>설정</span><b>→</b><span>연동 서비스</span><b>→</b><span>AI</span></div><p>선택한 Claude·Codex·Grok CLI를 이 Mac에 설치하고 각 CLI의 로그인 절차를 완료하세요. Cockpit은 AI API 토큰을 저장하지 않습니다. 플랫폼을 선택한 뒤 AI 연결과 전역 실행 스위치를 확인합니다.</p><p>일반 AI 작업은 선택한 플랫폼을 사용하며 실패해도 다른 AI로 조용히 바꾸지 않습니다. <strong>WARNING 자동 조사는 현재 Claude가 별도로 필요합니다.</strong></p>
+<figure class="native-figure guide-capture"><a href="../assets/screens/ai-settings.png" target="_blank" rel="noopener" aria-label="AI 연결 안내와 예시 계정의 잔여 한도를 보여 주는 설정 화면 원본 이미지, 새 탭에서 열기"><img src="../assets/screens/ai-settings.png" width="2160" height="1740" alt="AI 연결 안내와 예시 계정의 잔여 한도를 보여 주는 설정 화면" loading="lazy"></a><figcaption>실제 Cockpit 1.34.22 UI · 예시 데이터 렌더링 · 이미지 선택 시 확대</figcaption></figure>
+<h3 class="guide-subtitle" id="loki">Loki: Grafana 주소와 서비스 계정 토큰</h3><div class="guide-path"><span>설정</span><b>→</b><span>연동 서비스</span><b>→</b><span>Loki</span></div><ol class="guide-compact-steps"><li>조직에서 허용한 Grafana 주소와 로그 조회 범위를 설정합니다.</li><li>읽기 권한이 있는 Grafana 서비스 계정 토큰을 입력하고 저장합니다.</li><li>토큰은 이 Mac의 비밀값 파일에 소유자 전용 권한으로 저장됩니다. 프로필 JSON이나 공개 문서에 넣지 마세요.</li><li>‘다시 확인’에서 연결 상태와 마지막 수집 성공 시각을 확인합니다.</li></ol><div class="guide-callout info"><b>‘브라우저 수집 가능’은 API 연결 성공이 아닙니다</b><p>토큰이 없을 때 브라우저 로그인을 이용한 수집 경로가 제공될 수 있습니다. AI 조사의 Grafana 읽기 연결까지 준비됐다는 뜻은 아닙니다.</p></div>
+<figure class="native-figure guide-capture"><a href="../assets/screens/loki-settings.png" target="_blank" rel="noopener" aria-label="예시 Grafana 주소와 토큰 입력 영역을 보여 주는 Loki 연결 설정 원본 이미지, 새 탭에서 열기"><img src="../assets/screens/loki-settings.png" width="2160" height="1600" alt="예시 Grafana 주소와 토큰 입력 영역을 보여 주는 Loki 연결 설정" loading="lazy"></a><figcaption>실제 Cockpit 1.34.22 UI · 예시 데이터 렌더링 · 이미지 선택 시 확대</figcaption></figure>
+<h3 class="guide-subtitle" id="slack">Slack: 게시 권한과 사용자 매핑을 따로 확인</h3><p>설정 → 오류 대응의 Slack 연결에서 Bot/App 연결값과 감시 채널을 확인합니다. 메시지가 게시돼도 GitHub 작성자와 Slack 사용자의 매핑이 없으면 멘션은 실패할 수 있습니다.</p><ul class="guide-bullets"><li>Bot이 해당 채널에 참여했고 필요한 게시 권한이 있는지 확인합니다.</li><li>GitHub login이 해당 Workspace의 올바른 Slack member ID로 연결돼야 합니다. 표시 이름만 같다고 동일 사용자로 판단하지 않습니다.</li><li>지원하는 조직 Workflow 확장은 공통 사용자 디렉터리를 제공할 수 있습니다. 개인 매핑과 확장 설치 여부도 함께 확인하세요.</li></ul>
+<div class="guide-callout safe"><b>온콜 기능에는 Workflow 확장도 필요합니다</b><p>설치된 조직 Workflow가 온콜 자동화 기능을 제공해야 합니다. 그다음 Slack 채널·Jira 프로젝트·조사 방식을 설정하세요. 토큰과 개인 로그인은 확장이 대신 배포하지 않습니다.</p></div>
+</section>
+
+<section class="guide-section" id="usage"><header><small>계정 한도</small><h2>‘오늘 사용 없음’과 ‘한도 없음’은 다릅니다</h2><p>설정 → 연동 서비스 → AI에서 계정 잔여 한도와 Cockpit 실행 기록을 분리해 읽으세요.</p></header><div class="guide-split"><article><h3>계정 잔여 한도</h3><p>제공자가 보고한 한도 창과 초기화 시각입니다. 오늘 Cockpit을 실행하지 않았어도 조회 가능하면 표시됩니다. 다른 클라이언트에서 사용한 양도 계정 한도에 영향을 줄 수 있습니다.</p></article><article><h3>Cockpit 사용 기록</h3><p>이 앱에서 실행한 작업 수와 기록된 토큰·환산 비용입니다. 계정 전체의 남은 한도를 뜻하지 않습니다.</p></article></div><div class="guide-callout warning"><b>조회 불가는 0%가 아닙니다</b><p>인증·조회 경로 문제나 만료된 자료로 한도를 확인할 수 없으면 조회 불가로 표시합니다. 새로고침 후 조회 상태와 초기화 시각을 확인하세요.</p></div></section>
 
         <section class="guide-section" id="dashboard">
           <header><small>03 · DASHBOARD</small><h2>PR 상태와 실행 작업을 같은 시야에</h2><p>왼쪽은 판단할 PR, 오른쪽은 지금 움직이는 작업입니다. 메뉴 막대 패널과 큰 창은 같은 상태를 공유합니다.</p></header>
@@ -162,6 +155,8 @@
             <div><b>결정적 오류</b><span>인증·필수 CLI·실행 파일 문제처럼 기다려도 회복되지 않음</span></div>
             <div><b>완료 이력</b><span>실행 당시 모델·effort·수치·종료 원인</span></div>
           </div>
+<figure class="native-figure guide-capture"><a href="../assets/screens/history.png" target="_blank" rel="noopener" aria-label="WARNING 분석과 재발 티켓 생성이 보이는 작업 이력 예시 원본 이미지, 새 탭에서 열기"><img src="../assets/screens/history.png" width="2160" height="840" alt="WARNING 분석과 재발 티켓 생성이 보이는 작업 이력 예시" loading="lazy"></a><figcaption>실제 Cockpit 1.34.22 UI · 예시 데이터 렌더링 · 이미지 선택 시 확대</figcaption></figure>
+<h3 class="guide-subtitle">알림 수신과 분석 완료는 별도 단계입니다</h3><ul class="guide-bullets"><li><strong>대응 필요의 Slack 알림:</strong> 수집·분류된 이슈와 티켓 연결을 확인하고 ‘원문’으로 Slack 메시지를 엽니다.</li><li><strong>작업 이력 → WARNING 자동 분석 · Slack 스레드:</strong> 실행 결과·실패·보류 이유를 확인합니다.</li><li><strong>Slack 원문 스레드:</strong> 실제 게시된 분석을 확인합니다. 수신 시각만으로 게시 성공을 판단하지 않습니다.</li></ul><p>주간 OPR은 온콜 티켓과 조사 댓글을 모아 초안을 만들고, 앱에서 확인한 뒤 위키에 게시하거나 기존 페이지를 갱신하는 별도 흐름입니다.</p>
           <p>정체나 오류가 표시돼도 자동으로 재실행하지 않습니다. 현재 작업을 중단할지, 이력에서 다시 실행할지는 사용자가 선택합니다.</p>
         </section>
 
@@ -185,6 +180,24 @@
           <p>해결은 유효한 대응 완료, 무시는 노이즈·해당 없음 기록입니다. 둘 다 현재 이벤트를 종결하지만 새 이벤트가 들어오면 다시 판단할 수 있습니다. 완료 티켓 cutoff는 과거 로그의 재수집까지 막는 별도 기준입니다.</p>
         </section>
 
+        <section class="guide-section" id="warning"><header><small>선택형 자동화 · 기본 꺼짐</small><h2>WARNING을 조사해 원문 스레드에 기록하기</h2><p>Jira 티켓을 만들지 않고 경고를 분석해 Slack 원문 스레드에 결과를 게시하는 별도 기능입니다.</p></header><div class="guide-path"><span>설정</span><b>→</b><span>오류 대응</span><b>→</b><span>온콜 자동 조사</span></div>
+<ol class="guide-steps"><li><span>1</span><div><h3>먼저 연결과 범위를 확인합니다</h3><p>온콜 Workflow 확장, 자동화 사용, 감시 채널, Claude 로그인과 AI 실행, Grafana/Loki 읽기 연결, Slack 게시 권한이 필요합니다.</p></div></li><li><span>2</span><div><h3>‘WARNING 자동 분석·Slack 게시’를 켭니다</h3><p>이후 수신되는 새 root FIRING·WARNING이 대상입니다. 과거 수신함, 스레드 답글, RESOLVED 알림은 조사를 시작하지 않습니다. Jira 댓글 설정이나 티켓 전용 스킬과 별개입니다.</p></div></li><li><span>3</span><div><h3>원문 스레드와 작업 이력에서 확인합니다</h3><p>16세도 이해할 수 있는 설명으로 요약 → 영향 → 원인 → 다음 행동 → 미확인 사항을 표시합니다. 기술 근거는 아래로 분리하고 PromQL/LogQL은 코드 영역에 둡니다.</p></div></li></ol>
+<div class="guide-callout warning"><b>같은 채널은 담당 PC 한 대에서만 켜세요</b><p>중복 방지는 로컬 PC 기준입니다. 반복 경고는 채널·Workspace별 30분간 묶고 해소 후 재발은 다시 조사하지만, 여러 PC의 게시를 서로 막아 주지는 않습니다.</p></div>
+<p>Slack 전송 결과가 불확실하면 자동 재게시하지 않고 보류합니다. 전역 AI 중지, Workspace 변경, 설정 해제도 조사·게시 전에 다시 확인합니다.</p>
+</section>
+
+<section class="guide-section" id="deep"><header><small>추가 동의 · 기본 꺼짐</small><h2>심화 조사는 더 넓게 확인하되, 모르는 것은 남깁니다</h2><p>‘WARNING 자동 분석·Slack 게시’를 사용하는 경우 ‘WARNING 심화 조사’를 별도로 선택할 수 있습니다.</p></header>
+<figure class="native-figure guide-capture"><a href="../assets/screens/warning-settings.png" target="_blank" rel="noopener" aria-label="WARNING 자동 분석과 읽기 전용 심화 조사 옵션이 있는 오류 대응 설정 원본 이미지, 새 탭에서 열기"><img src="../assets/screens/warning-settings.png" width="2160" height="1720" alt="WARNING 자동 분석과 읽기 전용 심화 조사 옵션이 있는 오류 대응 설정" loading="lazy"></a><figcaption>실제 Cockpit 1.34.22 UI · 예시 데이터 렌더링 · 이미지 선택 시 확대</figcaption></figure>
+<div class="guide-split"><article><h3>추가로 확인하는 근거</h3><ul><li>등록·고정한 GitHub 저장소의 코드 검색과 고정 커밋 파일</li><li>GitHub 배포 기록과 상태, 등록된 배포 저장소의 선언</li><li>권한이 있는 Grafana 지표·로그와 관련 서비스 영향</li></ul></article><article><h3>제공하지 않는 접근</h3><ul><li>미등록·제외 저장소 또는 조직 전체의 무제한 검색</li><li>운영 DB·캐시 직접 접속</li><li>로컬 파일·셸·임의 HTTP와 운영 변경 명령</li></ul></article></div>
+<p>배포 매니페스트도 조사하려면 해당 저장소를 등록해야 합니다. 소스·모델 파일은 DB 설계의 근거일 뿐 실제 데이터 상태가 아니며, 기본 브랜치·GitHub 배포 기록·GitOps 선언만으로 실제 운영 커밋을 단정하지 않습니다.</p>
+<div class="guide-callout warning"><b>코드·운영 자료가 Claude에 전달됩니다</b><p>조사 시간과 AI 사용량이 늘 수 있습니다. 팀의 데이터 정책과 읽기 권한을 확인한 뒤 켜세요. GitHub 조회는 40회·15분, 개별 요청은 15초, 전체 WARNING 실행은 20분으로 제한됩니다.</p></div>
+<p>코드·배포·캐시·검색 서버·영향 확산을 확인/미확인/접근 불가/미수행으로 구분합니다. 경보가 해소됐다는 사실을 전체 서비스 정상 응답으로 해석하지 않습니다. 조사 중 설정이나 범위를 변경하면 추가 조회를 중단하거나 게시를 보류할 수 있습니다.</p>
+</section>
+
+<section class="guide-section" id="recurrence"><header><small>과거 대응 보존</small><h2>재발은 새 티켓으로 이어갈 수 있습니다</h2><p>완료된 티켓을 새 장애의 현재 티켓처럼 계속 사용하지 않아도 됩니다.</p></header><ol class="guide-compact-steps"><li>대응 필요에서 최근 발생 시각과 ‘Done 이후 재발’ 표시를 확인합니다.</li><li>재발 이슈의 티켓 작업에서 새 티켓 생성을 선택합니다.</li><li>기존 티켓을 과거 이력으로 보존하고 새 티켓을 현재 연결로 둡니다.</li><li>새 티켓에 과거 티켓을 <code>Relates</code> 연관 관계로 연결합니다. 생성·연결 결과도 확인하세요.</li></ol>
+<figure class="native-figure guide-capture"><a href="../assets/screens/alerts.png" target="_blank" rel="noopener" aria-label="새 티켓과 과거 티켓 이력이 있는 FAQ 지연 예시 원본 이미지, 새 탭에서 열기"><img src="../assets/screens/alerts.png" width="2160" height="640" alt="새 티켓과 과거 티켓 이력이 있는 FAQ 지연 예시" loading="lazy"></a><figcaption>실제 Cockpit 1.34.22 UI · 예시 데이터 렌더링 · 이미지 선택 시 확대</figcaption></figure>
+<p>‘완료 티켓 정리’는 원문 로그를 삭제하는 기능이 아닙니다. 완료 시각 이전 발생분을 목록·차트·다음 AI 입력에서 제외하고, 이후 발생분은 재발로 남깁니다.</p></section>
+
         <section class="guide-section" id="tools">
           <header><small>07 · TOOLS</small><h2>도구마다 AI 사용 여부가 다릅니다</h2><p>버튼의 ✦ 표식과 실행 카드의 ‘비AI·AI·혼합’ 표시를 보고 비용과 권한 범위를 판단할 수 있습니다.</p></header>
           <div class="tool-doc-grid">
@@ -206,10 +219,17 @@
           <div class="guide-callout safe"><b>중복 실행 방지</b><p>Workspace, PR head SHA와 리뷰 요청 신호를 함께 기록합니다. 같은 요청의 반복 폴링은 건너뛰고 코드 변경이나 새 재리뷰 요청만 새 작업으로 처리합니다.</p></div>
         </section>
 
+        <section class="guide-section" id="safety"><header><small>실행 전 확인</small><h2>로컬 보관과 외부 전달을 구분합니다</h2></header><ul class="guide-bullets"><li>이 공개 안내 사이트는 앱의 설정·계정·PR·로그를 수집하지 않습니다.</li><li>앱의 설정·상태·비밀값은 각 Mac에서 관리합니다. AI 실행 시 필요한 코드·로그는 해당 AI 서비스로 전달될 수 있습니다.</li><li>‘읽기 전용 조사’는 운영 시스템을 변경하지 않는다는 뜻입니다. WARNING 자동 게시를 켜면 조사 결과는 Slack에 쓰입니다.</li><li>일반 리뷰 게시, Jira 생성·댓글, 위키 게시도 각각의 실행·자동화 설정과 서비스 권한에 따릅니다.</li><li>업데이트는 통합 설치 경로를 사용합니다. 실행·대기 중 작업으로 막히면 작업 종료 후 다시 시도하고 강제로 우회하지 마세요.</li></ul></section>
+
         <section class="guide-section" id="troubleshooting">
           <header><small>09 · RECOVERY</small><h2>문제는 설정값보다 마지막 성공에서 찾습니다</h2><p>먼저 설정의 연동 진단과 작업 카드의 결정적 오류를 확인하세요.</p></header>
           <div class="trouble-list">
-            <details><summary>PR 목록이 비어 있습니다<span>＋</span></summary><p>GitHub 인증과 모니터링 저장소를 확인하세요. 조직·팀 범위를 비웠다면 직접 등록한 저장소만 정기 폴링합니다.</p></details>
+            <details><summary>AI가 연결되지 않고 토큰 입력 칸도 없습니다<span>＋</span></summary><p>각자 선택한 AI CLI에서 로그인한 다음 설정 → 연동 서비스 → AI의 연결과 실행 스위치를 확인하세요. WARNING 자동 조사는 별도로 Claude가 필요합니다. <a href="#connections">첫 연결 안내</a></p></details>
+<details><summary>Loki에 ‘토큰 없음 · 브라우저 수집 가능’이 표시됩니다<span>＋</span></summary><p>API 연결 완료 상태가 아닙니다. 설정 → 연동 서비스 → Loki에서 읽기 권한이 있는 서비스 계정 토큰을 저장하고 재진단하세요. <a href="#loki">Loki 안내</a></p></details>
+<details><summary>Slack 글은 게시되는데 멘션이 안 됩니다<span>＋</span></summary><p>게시 권한과 사용자 매핑은 별개입니다. 현재 GitHub login에 연결된 Slack member ID, Workspace 매핑과 공통 디렉터리 확장을 확인하세요. <a href="#slack">멘션 연결 안내</a></p></details>
+<details><summary>WARNING 분석 댓글이 보이지 않습니다<span>＋</span></summary><p>새 root FIRING·WARNING인지, 담당 PC에서 자동 게시가 켜져 있는지 확인하세요. 과거 수신함과 답글은 대상이 아닙니다. Claude·Grafana 읽기·Slack 게시 권한을 점검하고 작업 이력의 실패·보류 이유를 확인하세요. <a href="#warning">시작 조건</a></p></details>
+<details><summary>오늘 앱을 쓰지 않아 잔여 한도가 안 보입니다<span>＋</span></summary><p>오늘 실행 수와 계정 한도는 별개입니다. 계정 한도 조회 상태와 초기화 시각을 확인하세요. 조회 불가는 0% 소진이 아닙니다. <a href="#usage">사용량 안내</a></p></details>
+<details><summary>PR 목록이 비어 있습니다<span>＋</span></summary><p>GitHub 인증과 모니터링 저장소를 확인하세요. 조직·팀 범위를 비웠다면 직접 등록한 저장소만 정기 폴링합니다.</p></details>
             <details><summary>내 PR 또는 리뷰 요청이 보이지 않습니다<span>＋</span></summary><p>현재 <code>gh</code> 로그인 계정이 PR 작성자·리뷰어와 일치하는지 확인하세요. 범위 밖 리뷰 요청은 설정에서 ‘내 리뷰 요청 전체’를 켜야 합니다.</p></details>
             <details><summary>자동 리뷰가 시작되지 않습니다<span>＋</span></summary><p>AI 연동, 전역 AI 실행 스위치, 리뷰 모드와 Workspace 범위를 순서대로 확인하세요. <code>manual</code> 모드는 자동 리뷰를 실행하지 않습니다.</p></details>
             <details><summary>작업 카드가 정체 상태입니다<span>＋</span></summary><p>진행 신호가 늦은 것인지 결정적 오류가 있는지 먼저 구분하세요. 실패·시간 초과 작업은 자동 재실행되지 않으므로 원인을 해결한 뒤 수동으로 다시 실행합니다.</p></details>
@@ -219,6 +239,7 @@
           </div>
           <div class="guide-last-check"><span>LAST CHECK</span><div><b>설정 → 시작 및 상태 → 연동 진단</b><p>GitHub · AI · Jira · Loki · Slack의 마지막 성공과 오류를 한곳에서 확인합니다.</p></div></div>
         </section>
+<section class="guide-section" id="images"><header><small>공개 이미지</small><h2>화면은 실제 UI, 데이터는 공개용 예시입니다</h2><p>앱 1.34.22의 변경하지 않은 SwiftUI View를 격리된 테스트 창에서 렌더링해 내보냈습니다. HTML 모형이나 생성형 이미지가 아니며 설치된 실계정 앱의 화면 캡처도 아닙니다.</p></header><ul class="guide-bullets"><li>실제 PR·고객 정보·Slack ID·운영 로그·토큰을 복사하지 않았습니다.</li><li>샘플 데이터의 티켓·잔여 한도·작업 성공 표시는 기능 설명용이며 실제 실행 결과가 아닙니다.</li><li>별도 임시 설정 경로를 사용하고 렌더링 프로세스의 네트워크·하위 프로세스·실계정 민감 경로 읽기를 차단했습니다.</li><li>이미지에서 설정이 꺼져 있거나 확장 미설치로 보이는 것은 토큰·외부 연결을 주입하지 않은 예시 환경의 상태입니다.</li></ul><p>문서 기준 <strong>1.34.22</strong> · 갱신일 <time datetime="2026-09-06">2026년 9월 6일</time>. 이후 앱 버전에서는 배치나 기능이 달라질 수 있습니다.</p></section>
       </article>
     </div>
   </main>
@@ -226,7 +247,7 @@
   <footer class="site-footer guide-footer">
     <a class="brand footer-brand" href="../"><span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span><span>Cockpit</span></a>
     <p><a href="#guide-main">문서 처음으로 ↑</a></p>
-    <small>앱과 worker 사용 문서 · v1</small>
+    <small>문서 기준 1.34.22 · 2026.09.06 갱신</small>
   </footer>
 </body>
 </html>

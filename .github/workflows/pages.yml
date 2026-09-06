@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - "site/**"
+      - "scripts/check_site.py"
       - ".github/workflows/pages.yml"
   workflow_dispatch:
 
@@ -56,6 +57,9 @@ jobs:
             printf '%s\n' "$unexpected_internal_repositories" >&2
             exit 1
           fi
+
+      - name: Validate guide links and UI images
+        run: python3 scripts/check_site.py
 
       - name: Configure Pages
         uses: actions/configure-pages@v5

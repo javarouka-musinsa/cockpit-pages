@@ -1,0 +1,14 @@
+{
+  "appVersion": "1.34.22",
+  "updatedAt": "2026-09-06",
+  "method": "Unmodified production SwiftUI Views rendered in isolated test windows with fictional fixture data; not installed-account screenshots.",
+  "exampleData": true,
+  "images": [
+    {"file": "dashboard.png", "width": 2160, "height": 1280, "sha256": "22efb5396ec2d4b4b2bb32cae8aa2382d0a6999397f0bf36dde4f2dd25584aba"},
+    {"file": "alerts.png", "width": 2160, "height": 640, "sha256": "734f4dabd813ba827c3c810dcd48ad3f47128c4a459866db5cf1e60d1bb1128d"},
+    {"file": "ai-settings.png", "width": 2160, "height": 1740, "sha256": "d40ca37e94be237cd50de357a4e6a7baf4f3eb951fd1e0b0dd32e9fa91ba5319"},
+    {"file": "loki-settings.png", "width": 2160, "height": 1600, "sha256": "97d897da7fe5920ef33b2fc4c32d94160f12d3c55318077d5f3fe1a4dba770f7"},
+    {"file": "warning-settings.png", "width": 2160, "height": 1720, "sha256": "2a90bc80bc84f7d0df4c433fd1be90c97d24aaa209c6f8a263912ec48d6b4ac7"},
+    {"file": "history.png", "width": 2160, "height": 840, "sha256": "ea3e3a32fab8b127bbb96ac61dadfb953e317673b41b24d0ade776554b9c8f4f"}
+  ]
+}
